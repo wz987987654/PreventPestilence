@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',# 数据库引擎
         'NAME': 'axf',                       # 数据库名
         'USER': 'root',                      # 用户名
-        'PASSWORD': 'sunck',                 # 密码
+        'PASSWORD': '123456',                 # 密码
         'HOST': 'localhost',                 # 数据库主机 默认为 localhost
         'POST':'3306',                       # 数据库端口 MySQL默认3306
     }
