@@ -1,11 +1,15 @@
 from django.db import models
+
+
 '''
 from myApp.models import Grades,Students
 from django.utils import timezone
 from datetime import *
 '''
 # Create your models here.
+# 用户类
 class Users(models.Model):
+    user_id=models.IntegerField(verbose_name="用户id",default=1)
     user_name=models.CharField(verbose_name="用户名",max_length=20) # 用户名
     login_id=models.IntegerField(verbose_name="登陆id")   #用户登陆id
     #editable 加上去就不显示
@@ -26,35 +30,57 @@ class Users(models.Model):
     lastTime = models.DateTimeField(verbose_name="最后更新时间",auto_now=True)
     createTime = models.DateTimeField(verbose_name="创建时间",auto_now_add=True)
 
-    isDel=models.BooleanField(verbose_name="是否删除",default=True)# 是否删除
+    isDel=models.BooleanField(verbose_name="是否能删除",default=True)# 是否删除
     # fatheruser_id=models.IntegerField()#父亲用户ID
     #relevanceKey=models.CharField(max_length=20)#关联Key
     img = models.ImageField(verbose_name="头像",null=True, blank=True, upload_to="upload")# 上传图片
-
+    # touken验证值，每次登陆之后都会更新
+    user_Token = models.CharField(max_length=50)
     class Meta:
         #verbose_name = '用户管理'
         verbose_name_plural = '用户管理'
 
+    @classmethod
+    def createuser(cls, user_id,user_password,user_name, tele, mail,img, login_id,creator_id,update_id ):
+        u = cls(userAccount=user_id, userPasswd=user_password, userName=user_name, userPhone=tele, userMail=mail,
+                userImg=img,userlogin_id=login_id,usercreator_id=creator_id,userupdate_id=update_id)
+        return u
+
+# 通知类
+class Inform(models.Model):
+    inform_id=models.IntegerField(verbose_name="通知id", default=1)
+    content=models.CharField(verbose_name="内容",max_length=20)
+    focus_id=models.IntegerField(verbose_name="关注用户的id")
+    isSend=models.BooleanField(verbose_name="是否收到",default=True)
+    creator_id = models.IntegerField(verbose_name="创建者id", default=1)  # 创建者id
+    update_id = models.IntegerField(verbose_name="更新者id", default=1)  # 更新者id
+    lastTime = models.DateTimeField(verbose_name="最后更新时间", auto_now=True)
+    createTime = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
+    isDel = models.BooleanField(verbose_name="是否能删除", default=True)
+    class Meta:
+        #verbose_name = '用户管理'
+        verbose_name_plural = '通知管理'
+# 原始数据类
 class Rawdata(models.Model):
     date=models.DateTimeField(verbose_name="时间")
-    address=models.CharField(max_length=20)
-    temperature=models.FloatField(max_length=20)
-    humidity=models.FloatField(max_length=20)
-    atmospheric=models.FloatField(max_length=20)
-    precipitation=models.IntegerField()
-    sunshine=models.IntegerField()
-    wind=models.FloatField(max_length=20)
-    aqi=models.IntegerField()
-    pm2=models.FloatField(max_length=20)
-    pm10=models.FloatField(max_length=20)
-    SO2=models.FloatField(max_length=20)
-    CO=models.FloatField(max_length=20)
-    NO2=models.FloatField(max_length=20)
-    O3=models.FloatField(max_length=20)
-    incidence=models.FloatField(max_length=20)
+    address=models.CharField(verbose_name="地址",max_length=20)
+    temperature=models.FloatField(verbose_name="温度",max_length=20)
+    humidity=models.FloatField(verbose_name="湿度",max_length=20)
+    atmospheric=models.FloatField(verbose_name="气压",max_length=20)
+    precipitation=models.IntegerField(verbose_name="降水")
+    sunshine=models.IntegerField(verbose_name="日照")
+    wind=models.FloatField(verbose_name="风力",max_length=20)
+    aqi=models.IntegerField(verbose_name="空气质量")
+    pm2=models.FloatField(verbose_name="pm2.5",max_length=20)
+    pm10=models.FloatField(verbose_name="pm10",max_length=20)
+    SO2=models.FloatField(verbose_name="SO2",max_length=20)
+    CO=models.FloatField(verbose_name="CO",max_length=20)
+    NO2=models.FloatField(verbose_name="NO2",max_length=20)
+    O3=models.FloatField(verbose_name="O3",max_length=20)
+    incidence=models.FloatField(verbose_name="发病数",max_length=20)
     class Meta:
         verbose_name_plural = '天气、污染原始数据'
-
+# 预测类
 class Forecast(models.Model):
     #pre_id=models.IntegerField(default=1)
     pre_date=models.DateTimeField(verbose_name="待预测日期",auto_now_add=True)
@@ -68,8 +94,57 @@ class Forecast(models.Model):
     class Meta:
         verbose_name_plural = '预测数据'
 
-class Grades(models.Model):
+# 通知收藏类
+class Collect(models.Model):
+    collect_id=models.IntegerField()
+    user_id = models.ForeignKey('Users',on_delete=models.CASCADE)
+    inform_id=models.ForeignKey('Inform',on_delete=models.CASCADE)
+    creator_id = models.IntegerField(verbose_name="创建者id", default=1)  # 创建者id
+    update_id = models.IntegerField(verbose_name="更新者id", default=1)  # 更新者id
+    lastTime = models.DateTimeField(verbose_name="最后更新时间", auto_now=True)
+    createTime = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
+    isDel = models.BooleanField(verbose_name="是否能删除", default=True)
+    class Meta:
+        #verbose_name = '用户管理'
+        verbose_name_plural = '收藏管理'
 
+# 留言类
+class Message(models.Model):
+    message_id=models.IntegerField(verbose_name="留言id",default=1)
+    content=models.CharField(verbose_name="留言内容",max_length=2000)
+    user_id=models.ForeignKey('Users',on_delete=models.CASCADE)
+    #inform_id=models.ForeignKey('Inform',on_delete=models.CASCADE)
+    isShow=models.BooleanField(verbose_name="是否显示",default=True)
+    creator_id = models.IntegerField(verbose_name="创建者id", default=1)  # 创建者id
+    update_id = models.IntegerField(verbose_name="更新者id", default=1)  # 更新者id
+    lastTime = models.DateTimeField(verbose_name="最后更新时间", auto_now=True)
+    createTime = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
+    isDel = models.BooleanField(verbose_name="是否能删除", default=True)
+    class Meta:
+        #verbose_name = '用户管理'
+        verbose_name_plural = '留言管理'
+
+class Jurisdiction(models.Model):
+    root_id=models.IntegerField(verbose_name="权限id",default=1)
+
+    ROOT_NAME_LIST = (
+        (1, '预测发病数'),
+        (2, '爬取数据'),
+        (3, '保存数据'),
+    )
+
+    root_name=models.IntegerField(verbose_name="权限名", choices=ROOT_NAME_LIST, default=1)
+    creator_id = models.IntegerField(verbose_name="创建者id", default=1)  # 创建者id
+    update_id = models.IntegerField(verbose_name="更新者id", default=1)  # 更新者id
+    lastTime = models.DateTimeField(verbose_name="最后更新时间", auto_now=True)
+    createTime = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
+    isDel = models.BooleanField(verbose_name="是否能删除", default=True)
+    class Meta:
+        #verbose_name = '用户管理'
+        verbose_name_plural = '权限管理'
+
+
+class Grades(models.Model):
     gname=models.CharField(max_length=20)
     gdate=models.DateTimeField()
     ggirlnum=models.IntegerField()
@@ -82,6 +157,9 @@ class Grades(models.Model):
         return self.gname
     class Meta:
         db_table="grades"
+    class Meta:
+        #verbose_name = '用户管理'
+        verbose_name_plural = '测试1'
 
 class StudentsManager(models.Manager):
 
@@ -131,3 +209,6 @@ class Students(models.Model):
     class Meta:
         db_table="students"
         ordering=['id']
+    class Meta:
+        #verbose_name = '用户管理'
+        verbose_name_plural = '测试2'

@@ -9,5 +9,10 @@ urlpatterns=[
     url(r'^studentsearch/$',views.studentsearch),
     url(r'^addstudent/$',views.addstudent),
     url(r'^addstudent2/$', views.addstudent2),
-    url(r'^grades/$',views.grades)
+    url(r'^grades/$',views.grades),
+
+
+    # 登陆
+    url(r'^login/$',views.login,name="login"),
+    url(r'^register/$',views.register,name="register"),
 ]

@@ -1,0 +1,60 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    {% block linkscript%}
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/swiper.min.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/reset.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/base.css'%}" />
+
+    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/swiper.min.js' %}"></script>
+    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/base.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/login.css' %}" />
+    <script type="text/javascript" charset="utf-8" src="{% static 'login/js/login.js' %}" ></script>
+    {% endblock linkscript%}
+
+</head>
+
+<body>
+{% block base %}
+
+<div id="login">
+
+    <div id="box">
+        <form action="/login/" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                账号：{{form.user_name}}
+<!--                <input type="text" name="username" class="c" maxlength="12" minlength="6" required="" id="id_username">-->
+                <br />
+                {% if error.user_name.0 %}
+                <span>{{error.user_name.0}}</span>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                密码：{{form.user_password}}
+<!--                <input type="password" name="passwd" maxlength="16" minlength="6" required="" id="id_passwd">-->
+                <br />
+                {% if error.user_password.0 %}
+                <span>{{error.user_password.0}}</span>
+                {% endif %}
+            </div>
+            <div>
+                <input type="submit" value="登陆"/>
+            </div>
+            <a href="/mine/"><p>&lt;返回</p></a>
+            <br>
+            <a href="/mine/"><p>忘记密码></p></a>
+        </form>
+    </div>
+</div>
+
+{% endblock base %}
+</body>
+</html>

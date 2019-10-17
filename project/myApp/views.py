@@ -1,11 +1,15 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.http import HttpResponse,JsonResponse
+import time
+import os
+import random
+from django.conf  import settings
 # Create your views here.
 def index(request):
     #return HttpResponse("sunck is a good man")
     return render(request,'myApp/index.html')
 
-from .models import Students,Grades,StudentsManager
+from .models import Users,Students,Grades,StudentsManager
 def students(request):
     studentsList=Students.stuObj2.all()
     return render(request,'myApp/students.html',{"students":studentsList})
@@ -68,3 +72,59 @@ def grades(request):
     # print(g)
 
     return HttpResponse("QQQQQo")
+
+#登陆
+from .forms.login import LoginForm
+def login(request):
+   if request.method=="POST":
+       f=LoginForm(request.POST)
+       if f.is_valid():
+           # 信息格式没多大问题 验证账号和密码的正确性
+            print("************************************")
+            nameid = f.cleaned_data["user_name"]
+            pswd = f.cleaned_data["user_password"]
+            try:
+               user=Users.objects.get(userAccount=nameid)
+               if user.userPasswd!=pswd:
+                    return redirect('/login/')
+            except Users.DoesNotExist as e:
+                    return redirect('/login/')
+            # 登陆成功
+
+            user.save()
+            request.session["username"] = user.userName
+
+            return redirect('/mine/')
+       else:
+            return render(request,'myapp/login.html',{"title":"登陆","form":f,"error":f.errors})
+   else:
+        f=LoginForm()
+        return render(request, 'myapp/login.html', {"title": "登陆", "form": f, "error": f.errors})
+
+
+#注册
+def register(request):
+    if request.method == "POST":
+        userAccount = request.POST.get("user_id")
+        userPasswd  = request.POST.get("user_password")
+        userName    = request.POST.get("user_name")
+        userPhone   = request.POST.get("tele")
+        userMail = request.POST.get("mail")
+
+        token = time.time() + random.randrange(1, 100000)
+        userToken = str(token)
+        f = request.FILES["img"]
+        userImg = os.path.join(settings.MDEIA_ROOT, userAccount + ".png")
+        with open(userImg, "wb") as fp:
+            for data in f.chunks():
+                fp.write(data)
+
+        user = Users.createuser(userAccount,userPasswd,userName,userPhone,userMail,userImg,userToken)
+        user.save()
+
+        request.session["user_name"] = userName
+        request.session["token"] = userToken
+
+        return redirect('/mine/')
+    else:
+        return render(request, 'myApp/register.html', {"title":"注册"})
