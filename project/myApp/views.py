@@ -83,8 +83,10 @@ def login(request):
             print("************************************")
             nameid = f.cleaned_data["user_name"]
             pswd = f.cleaned_data["user_password"]
+            print(nameid)
+            print(pswd)
             try:
-               user=Users.objects.get(userAccount=nameid)
+               user=Users.objects.get(user_name=nameid)
                if user.userPasswd!=pswd:
                     return redirect('/login/')
             except Users.DoesNotExist as e:
