@@ -10,12 +10,12 @@ from datetime import *
 # 用户类
 class Users(models.Model):
     user_id=models.IntegerField(verbose_name="用户id",default=1)
-    user_name=models.CharField(verbose_name="用户名",max_length=20) # 用户名
-    login_id=models.IntegerField(verbose_name="登陆id")   #用户登陆id
+    user_name=models.CharField(verbose_name="用户名",max_length=20,default=1) # 用户名
+    #login_id=models.IntegerField(verbose_name="登陆id")   #用户登陆id
     #editable 加上去就不显示
     user_password=models.CharField(verbose_name="登陆密码",editable=False,max_length=20,default="12345678") # 用户密码
-    tele=models.CharField(verbose_name="手机号码",max_length=20) #电话
-    mail=models.CharField(verbose_name="邮箱",max_length=20) # 邮箱
+    user_phone=models.CharField(verbose_name="手机号码",max_length=20,default=1) #电话
+    user_mail=models.CharField(verbose_name="邮箱",max_length=20,default=1) # 邮箱
     isInform=models.BooleanField(verbose_name="是否通知",default=True) # 是否通知
     isMail=models.BooleanField(verbose_name="是否发邮件",default=True) # 是否邮件
     #user_type=models.CharField(max_length=20) # 用户类型
@@ -29,21 +29,16 @@ class Users(models.Model):
     update_id=models.IntegerField(verbose_name="更新者id") #更新者id
     lastTime = models.DateTimeField(verbose_name="最后更新时间",auto_now=True)
     createTime = models.DateTimeField(verbose_name="创建时间",auto_now_add=True)
-
     isDel=models.BooleanField(verbose_name="是否能删除",default=True)# 是否删除
     # fatheruser_id=models.IntegerField()#父亲用户ID
     #relevanceKey=models.CharField(max_length=20)#关联Key
     img = models.ImageField(verbose_name="头像",null=True, blank=True, upload_to="upload")# 上传图片
-    # touken验证值，每次登陆之后都会更新
-    user_Token = models.CharField(max_length=50)
     class Meta:
         #verbose_name = '用户管理'
         verbose_name_plural = '用户管理'
-
     @classmethod
-    def createuser(cls, user_id,user_password,user_name, tele, mail,img, login_id,creator_id,update_id ):
-        u = cls(userAccount=user_id, userPasswd=user_password, userName=user_name, userPhone=tele, userMail=mail,
-                userImg=img,userlogin_id=login_id,usercreator_id=creator_id,userupdate_id=update_id)
+    def createuser(cls, userName,userPasswd, userPhone, userMail ):
+        u = cls(user_name=userName, user_password =userPasswd, user_phone=userPhone, user_mail=userMail)
         return u
 
 # 通知类

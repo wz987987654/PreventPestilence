@@ -75,28 +75,29 @@ def grades(request):
 
 #登陆
 from .forms.login import LoginForm
+
+
+
 def login(request):
    if request.method=="POST":
        f=LoginForm(request.POST)
        if f.is_valid():
            # 信息格式没多大问题 验证账号和密码的正确性
             print("************************************")
-            nameid = f.cleaned_data["user_name"]
+            name = f.cleaned_data["user_name"]# cleaned_data读取表单返回的值，返回类型为字典dict
             pswd = f.cleaned_data["user_password"]
-            print(nameid)
+            print(name)
             print(pswd)
             try:
-               user=Users.objects.get(user_name=nameid)
+               user=Users.objects.get(user_name=name)
                if user.userPasswd!=pswd:
                     return redirect('/login/')
             except Users.DoesNotExist as e:
                     return redirect('/login/')
             # 登陆成功
-
             user.save()
             request.session["username"] = user.userName
-
-            return redirect('/mine/')
+            return redirect('/index/')
        else:
             return render(request,'myapp/login.html',{"title":"登陆","form":f,"error":f.errors})
    else:
@@ -107,26 +108,35 @@ def login(request):
 #注册
 def register(request):
     if request.method == "POST":
-        userAccount = request.POST.get("user_id")
-        userPasswd  = request.POST.get("user_password")
-        userName    = request.POST.get("user_name")
-        userPhone   = request.POST.get("tele")
-        userMail = request.POST.get("mail")
-
-        token = time.time() + random.randrange(1, 100000)
-        userToken = str(token)
-        f = request.FILES["img"]
-        userImg = os.path.join(settings.MDEIA_ROOT, userAccount + ".png")
-        with open(userImg, "wb") as fp:
-            for data in f.chunks():
-                fp.write(data)
-
-        user = Users.createuser(userAccount,userPasswd,userName,userPhone,userMail,userImg,userToken)
+        user_name = request.POST.get("username")
+        user_password  = request.POST.get("user_password")
+        user_phone   = request.POST.get("tele")
+        user_mail = request.POST.get("mail")
+        user = Users.createuser(user_name,user_password,user_phone,user_mail)
         user.save()
-
-        request.session["user_name"] = userName
-        request.session["token"] = userToken
-
-        return redirect('/mine/')
+        #request.session["user_name"] = userName
+        return redirect('/login/')
     else:
         return render(request, 'myApp/register.html', {"title":"注册"})
+
+'''
+# 验证是否能注册
+def checkuserid(request):
+    userid = request.POST.get("userid")
+    try:
+        user = Users.objects.get(userAccount = userid)
+        return JsonResponse({"data":"改用户已经被注册","status":"error"})
+    except Users.DoesNotExist as e:
+        return JsonResponse({"data":"可以注册","status":"success"})
+        
+# 退出登陆
+from django.contrib.auth import logout
+def quit(request):
+    logout(request)
+    return redirect('/mine/')
+
+def forecast(request):
+    #return render(request, 'axf/map/forecast.html')
+    return render(request, 'axf/map/世界地图.html')
+'''
+

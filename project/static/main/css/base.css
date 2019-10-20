@@ -14,7 +14,7 @@ body{
 header, footer{
     width: 100%;
     height: 1.5rem;
-    font-size:0.277777rem;
+    font-size:0.02rem;
     border-top:1px solid #f0f0f0;
     z-index:10;
     position:fixed;
@@ -30,17 +30,12 @@ header{
 
 }
 footer{
+font:13px;
     background:#fff;
     bottom:0;
     left:0;
 }
 
-footer a{
-    display:block;
-    width:25%!important;
-    text-align:center;
-    overflow:hidden!important;
-}
 
 footer dl dt{
     height:0.777777rem;
@@ -61,22 +56,7 @@ footer dl dd{
 }
 
 
-footer .home span{
-    background: url(/static/main/img/home.png) no-repeat;
-    background-size:0.513889rem;
-}
-footer .market span{
-    background:url(/static/main/img/market.png) no-repeat;
-    background-size:0.513889rem;
-}
-footer .cart span{
-    background:url(/static/main/img/cart.png) no-repeat;
-    background-size:0.513889rem;
-}
-footer .mine span{
-    background:url(/static/main/img/mine.png) no-repeat;
-    background-size:0.513889rem;
-}
+
 
 a{
     text-decoration:none

@@ -8,7 +8,9 @@ admin.site.site_title = '登录系统后台'
 admin.site.index_title = '后台管理'
 
 class UsersAdmin(admin.ModelAdmin):
-    list_display = ['id','user_name','login_id','tele','mail','isInform',
+    list_display = ['id','user_name',
+                    #'login_id',
+                    'user_mail','user_phone','isInform',
                     'isMail','user_type','power_type','creator_id','update_id',
                    # 'lastTime','createTime',
                     'isDel','img']
@@ -38,9 +40,9 @@ class ForecastAdmin(admin.ModelAdmin):
 
     #inlines = [AreaTabu1,]
 class InformAdmin(admin.ModelAdmin):
-    list_display = ['id', 'content', 'isSend', 'creator_id', 'update_id', 'createTime', 'lastTime','isDel', 'focus_id']
+    list_display = ['id', 'content', 'isSend', 'creator_id', 'update_id', 'createTime', 'lastTime']
     list_filter = ['creator_id','update_id', 'createTime', 'lastTime']
-    search_fields = ['id', 'content', 'isSend', 'creator_id', 'update_id', 'createTime', 'lastTime','isDel', 'focus_id']  # 查找
+    search_fields = ['id', 'content', 'isSend', 'creator_id', 'update_id', 'createTime', 'lastTime']  # 查找
     list_per_page = 5
 
 class CollectAdmin(admin.ModelAdmin):

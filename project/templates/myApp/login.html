@@ -1,20 +1,20 @@
 {% extends 'myApp/base.html' %}
 {% load static from staticfiles %}
 {% block linkscript%}
-    <link rel="stylesheet" type="text/css" href="{% static 'login/css/login.css' %}" />
-    <script type="text/javascript" charset="utf-8" src="{% static 'login/js/login.js' %}" ></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'mine/css/login.css' %}" />
+    <script type="text/javascript" charset="utf-8" src="{% static 'mine/js/login.js' %}" ></script>
 {% endblock linkscript%}
 
 {% block base %}
 
 <div id="login">
 
-    <div id="box">
+    <div >
         <form action="/login/" method="post">
             {% csrf_token %}
             <div class="input-group">
                 账号：{{form.user_name}}
-<!--                <input type="text" name="username" class="c" maxlength="12" minlength="6" required="" id="id_username">-->
+               <input type="text" name="username" class="c" maxlength="12" minlength="6" required="" id="id_username">
                 <br />
                 {% if error.user_name.0 %}
                 <span>{{error.user_name.0}}</span>
@@ -28,12 +28,14 @@
                 <span>{{error.user_password.0}}</span>
                 {% endif %}
             </div>
+            <br>
             <div>
                 <input type="submit" value="登陆"/>
+                <input type="submit" value="忘记密码"/>
             </div>
-            <a href="/mine/"><p>&lt;返回</p></a>
             <br>
-            <a href="/mine/"><p>忘记密码></p></a>
+            <a href="#">返回</a>
+
         </form>
     </div>
 </div>

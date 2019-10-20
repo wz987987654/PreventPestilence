@@ -1,26 +1,10 @@
+{% extends 'myApp/base.html' %}
 {% load static from staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>注册</title>
-    {% block linkscript%}
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css'%}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/swiper.min.css'%}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/reset.css'%}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/base.css'%}" />
-
-    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/jquery-3.1.1.min.js' %}"></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/swiper.min.js' %}"></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/base.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'login/css/login.css' %}" />
-    <script type="text/javascript" charset="utf-8" src="{% static 'login/js/login.js' %}" ></script>
+{% block linkscript%}
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/register.css' %}" />
+    <script type="text/javascript" charset="utf-8" src="{% static 'login/js/register.js' %}" ></script>
     {% endblock linkscript%}
 
-</head>
-<body>
 {% block base %}
 <div id="register">
     <div id="header">
@@ -30,14 +14,14 @@
         {%csrf_token%}
         <div class="input-group">
             <span class="input-group-addon">账号</span>
-            <input id="accunt" type="text" class="form-control" placeholder="账号长度为6到12个字符" aria-describedby="basic-addon1" name="userName">
+            <input id="accunt" type="text" class="form-control" placeholder="账号长度为6到12个字符" aria-describedby="basic-addon1" name="username">
         </div>
         <span id="accunterr" class="error">账号格式输入错误</span>
         <span id="checkerr" class="error">账号已被占用，请重新输入</span>
         <br/>
         <div class="input-group">
             <span class="input-group-addon">密码</span>
-            <input id="pass" type="password" class="form-control" placeholder="密码长度为6~16个字符" aria-describedby="basic-addon1" name="userPass">
+            <input id="pass" type="password" class="form-control" placeholder="密码长度为6~16个字符" aria-describedby="basic-addon1" name="user_password">
         </div>
         <span id="passerr" class="error">密码格式输入错误</span>
         <br />
@@ -47,25 +31,22 @@
         </div>
         <span id="passwderr" class="error">两次密码输入不同</span>
         <br/>
-        <div class="input-group">
-            <span class="input-group-addon">昵称</span>
-            <input required="required" type="text" class="form-control" aria-describedby="basic-addon1" name="userName">
-        </div>
+
         <br/>
         <div class="input-group">
             <span class="input-group-addon">邮箱</span>
-            <input required="required" type="text" class="form-control" aria-describedby="basic-addon1" name="userMail">
+            <input required="required" type="email" class="form-control" aria-describedby="basic-addon1" name="user_mail">
+        </div>
+        <br/>
+        <div class="input-group">
+            <span class="input-group-addon">手机号</span>
+            <input required="required" type="tel" class="form-control" aria-describedby="basic-addon1" name="user_phone">
         </div>
         <br/>
 <!--        <div class="input-group">-->
-<!--            <span class="input-group-addon">地址</span>-->
-<!--            <input required="required" type="text" class="form-control" aria-describedby="basic-addon1" name="userAdderss">-->
+<!--            <span class="input-group-addon">头像</span>-->
+<!--            <input required="required" type="file" class="form-control" aria-describedby="basic-addon1" name="userImg">-->
 <!--        </div>-->
-        <br/>
-        <div class="input-group">
-            <span class="input-group-addon">头像</span>
-            <input required="required" type="file" class="form-control" aria-describedby="basic-addon1" name="userImg">
-        </div>
         <br/>
         <div class="input-group">
             <span class="input-group-addon">注册</span>
@@ -74,5 +55,3 @@
     </form>
 </div>
 {% endblock base %}
-</body>
-</html>
