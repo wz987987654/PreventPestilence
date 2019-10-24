@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>首页</title>
-</head>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>首页</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>欢迎访问！ </h1>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <body>
-    <h1>欢迎访问！ </h1>
-</body>
-</html>
+    <!-- {%for student in students_list%}
+      {{student.sname}}--{{student.sage}}
+      <br>
+    {%endfor%} -->
+    <h1>这是一个index页面</h1>
+    <p>欢迎：{{user.user_name}}--{{user.user_password}}</p>
+	<button onclick="javascript:location.href='/logout/'">退出</button>
+  </body>
+  {% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}

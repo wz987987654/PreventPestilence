@@ -13,6 +13,13 @@ urlpatterns=[
 
 
     # 登陆
+    url(r'^index/$',views.index,name="index"),
     url(r'^login/$',views.login,name="login"),
-    url(r'^register/$',views.register,name="register"),
+    #url(r'^register/$',views.register,name="register"),
+    url(r'^to_adduser/$', views.to_adduser),
+    url(r'^adduser/$', views.adduser),
+    url(r'^logout/$', views.logout),
+    url(r'^changepassword/$', views.changepassword),
+    url(r'^to_change/$', views.to_change),
+    url(r'^forecast/$',views.forecast,name='forecast')
 ]

@@ -12,8 +12,8 @@ class UsersAdmin(admin.ModelAdmin):
                     #'login_id',
                     'user_mail','user_phone','isInform',
                     'isMail','user_type','power_type','creator_id','update_id',
-                   # 'lastTime','createTime',
-                    'isDel','img']
+                   'lastTime','createTime',# 'isDel','img'
+                    ]
     list_filter = ['user_name']
     search_fields = ['user_name']  # 查找
     list_per_page = 5
@@ -30,11 +30,11 @@ class RawdataAdmin(admin.ModelAdmin):
 #     extra = 2
 #@admin.register(Forecast)
 class ForecastAdmin(admin.ModelAdmin):
-    list_display = [ 'id','pre_date','pre_type','isDel', 'pre_result','creator_id','update_id','createTime','lastTime']
+    list_display = [ 'id','pre_date','pre_type','pre_result','real_result','createTime','lastTime']
     #list_display = ['pk', 'pre_date', 'pre_type', 'isDel', 'pre_result', 'update_id']
 
     list_filter = ['pre_date','pre_type'] # 过滤器
-    search_fields = ['pre_date','pre_type']  # 查找
+    search_fields = ['pre_type']  # 查找
     date_hierarchy = 'pre_date'  # 详细时间分层筛选　
     list_per_page = 5
 
@@ -46,13 +46,13 @@ class InformAdmin(admin.ModelAdmin):
     list_per_page = 5
 
 class CollectAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user_id', 'inform_id', 'creator_id', 'update_id', 'createTime', 'lastTime', 'isDel']
+    list_display = ['id', 'user_id', 'inform_id', 'creator_id', 'update_id', 'createTime', 'lastTime']
     list_filter = ['creator_id', 'update_id', 'createTime', 'lastTime']
-    search_fields = ['id', 'user_id', 'inform_id', 'creator_id', 'update_id', 'createTime', 'lastTime', 'isDel']  # 查找
+    search_fields = ['id', 'user_id', 'inform_id', 'creator_id', 'update_id', 'createTime', 'lastTime']  # 查找
     list_per_page = 5
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ['id', 'content', 'user_id','isShow', 'creator_id', 'update_id', 'createTime', 'lastTime', 'isDel']
+    list_display = ['id','creator_id', 'update_id','content', 'isShow',   'createTime', 'lastTime']
     list_filter = ['user_id','isShow','creator_id', 'update_id', 'createTime', 'lastTime']
     search_fields = [ 'user_id', 'isShow', 'creator_id', 'update_id', 'createTime', 'lastTime']  # 查找
     list_per_page = 5

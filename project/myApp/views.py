@@ -1,5 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,JsonResponse
+from django.contrib import messages
+from .models import Users,Forecast,Students,Grades,StudentsManager
+from functools import wraps
 import time
 import os
 import random
@@ -9,7 +12,7 @@ def index(request):
     #return HttpResponse("sunck is a good man")
     return render(request,'myApp/index.html')
 
-from .models import Users,Students,Grades,StudentsManager
+
 def students(request):
     studentsList=Students.stuObj2.all()
     return render(request,'myApp/students.html',{"students":studentsList})
@@ -74,69 +77,114 @@ def grades(request):
     return HttpResponse("QQQQQo")
 
 #登陆
-from .forms.login import LoginForm
-
-
+# 说明：这个装饰器的作用，就是在每个视图函数被调用时，都验证下有没法有登录，
+# 如果有过登录，则可以执行新的视图函数，
+# 否则没有登录则自动跳转到登录页面。
+def check_login(f):
+    @wraps(f)
+    def inner(request,*arg,**kwargs):
+        if request.session.get('is_login')=='1':
+            return f(request,*arg,**kwargs)
+        else:
+            return redirect('/login/')
+    return inner
 
 def login(request):
-   if request.method=="POST":
-       f=LoginForm(request.POST)
-       if f.is_valid():
-           # 信息格式没多大问题 验证账号和密码的正确性
-            print("************************************")
-            name = f.cleaned_data["user_name"]# cleaned_data读取表单返回的值，返回类型为字典dict
-            pswd = f.cleaned_data["user_password"]
-            print(name)
-            print(pswd)
-            try:
-               user=Users.objects.get(user_name=name)
-               if user.userPasswd!=pswd:
-                    return redirect('/login/')
-            except Users.DoesNotExist as e:
-                    return redirect('/login/')
-            # 登陆成功
-            user.save()
-            request.session["username"] = user.userName
+    # 如果是POST请求，则说明是点击登录按扭 FORM表单跳转到此的，那么就要验证密码，并进行保存session
+    if request.method=="POST":
+        user_name=request.POST.get('user_name')
+        user_password=request.POST.get('user_password')
+
+        user=Users.objects.filter(user_name=user_name,user_password=user_password)
+        print(user)
+        if user:
+            #登录成功
+            # 1，生成特殊字符串
+            # 2，这个字符串当成key，此key在数据库的session表（在数据库存中一个表名是session的表）中对应一个value
+            # 3，在响应中,用cookies保存这个key ,(即向浏览器写一个cookie,此cookies的值即是这个key特殊字符）
+            request.session['is_login']='1'  # 这个session是用于后面访问每个页面（即调用每个视图函数时要用到，即判断是否已经登录，用此判断）
+            request.session['user_id']=user[0].id
+            messages.success(request,"登陆成功")
+            #return redirect('/myApp/index/')
             return redirect('/index/')
-       else:
-            return render(request,'myapp/login.html',{"title":"登陆","form":f,"error":f.errors})
-   else:
-        f=LoginForm()
-        return render(request, 'myapp/login.html', {"title": "登陆", "form": f, "error": f.errors})
+        else:
+            messages.success(request,"账号密码错误")
+            return redirect('/login/')
+    # 如果是GET请求，就说明是用户刚开始登录，使用URL直接进入登录页面的
+    return render(request,'myApp/login.html')
 
+@check_login
+def index(request):
+    # students=Students.objects.all()  ## 说明，objects.all()返回的是二维表，即一个列表，里面包含多个元组
+    # return render(request,'index.html',{"students_list":students})
+    # user_name1=request.session.get('user_name')
+    user_id1=request.session.get('user_id')
+    # 使用user_id去数据库中找到对应的user信息
+    userobj=Users.objects.filter(id=user_id1)
+    print(userobj)
+    if userobj:
+        return render(request,'myApp/index.html',{"user":userobj[0]})
+    else:
+        return render(request,'myApp/index.html',{'user','匿名用户'})
 
-#注册
-def register(request):
-    if request.method == "POST":
-        user_name = request.POST.get("username")
-        user_password  = request.POST.get("user_password")
-        user_phone   = request.POST.get("tele")
-        user_mail = request.POST.get("mail")
-        user = Users.createuser(user_name,user_password,user_phone,user_mail)
+def adduser(request):
+    if request.method=="POST":
+        user_name=request.POST.get('user_name')
+        user_mail=request.POST.get('user_mail')
+        user_phone = request.POST.get('user_phone')
+        user_password = request.POST.get('user_password')
+        creator_id=request.POST.get('creator_id')
+        print(user_name)
+        test1 = Users(user_name=user_name,user_password=user_password,user_mail=user_mail,user_phone=user_phone,creator_id=creator_id)
+        test1.save()
+    return render(request,'myApp/login.html')
+
+def to_adduser(request):
+    return render(request,'myApp/adduser.html')
+
+def to_change(request):
+    return render(request,'myApp/changepassword.html')
+
+def logout(request):
+    request.session['is_login']='0'
+
+    return render(request,'myApp/login.html')
+
+def changepassword(request):
+    user_name=request.POST.get('user_name')
+    user_password=request.POST.get('user_password')
+    userobj = Users.objects.filter(user_name=user_name)
+
+    # Test.objects.filter(user_name=user_name).update(user_password=user_password)
+    if userobj:
+        user = Users.objects.get(user_name=user_name)
+        user.user_password=user_password
         user.save()
-        #request.session["user_name"] = userName
+        messages.info(request,"修改成功")
         return redirect('/login/')
     else:
-        return render(request, 'myApp/register.html', {"title":"注册"})
+        messages.info(request,"没有找到该user_name")
+        return redirect('/myApp/to_change/')
 
-'''
-# 验证是否能注册
-def checkuserid(request):
-    userid = request.POST.get("userid")
-    try:
-        user = Users.objects.get(userAccount = userid)
-        return JsonResponse({"data":"改用户已经被注册","status":"error"})
-    except Users.DoesNotExist as e:
-        return JsonResponse({"data":"可以注册","status":"success"})
-        
-# 退出登陆
-from django.contrib.auth import logout
-def quit(request):
-    logout(request)
-    return redirect('/mine/')
+
 
 def forecast(request):
-    #return render(request, 'axf/map/forecast.html')
-    return render(request, 'axf/map/世界地图.html')
-'''
+    temperature = request.POST.get('temperature')
+    humidity = request.POST.get('humidity')
+    atmospheric = request.POST.get('atmospheric')
+    precipitation = request.POST.get('precipitation')
+    sunshine = request.POST.get('sunshine')
+    wind = request.POST.get('wind')
+    aqi = request.POST.get('aqi')
+    pm2 = request.POST.get('pm2')
+    SO2 = request.POST.get('SO2')
+    CO = request.POST.get('CO')
+    NO2 = request.POST.get('NO2')
+    O3 = request.POST.get('O3')
+    forecast=Forecast.objects.filter(temperature=temperature,humidity=humidity,atmospheric=atmospheric,precipitation=precipitation,
+                                     sunshine=sunshine,wind=wind,aqi=aqi,pm2=pm2,SO2=SO2,CO=CO,NO2=NO2,O3=O3)
+
+    #
+    #return redirect( 'map')
+
 
