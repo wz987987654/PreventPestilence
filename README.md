@@ -12,7 +12,7 @@
        
     2.安装根据自己的操作系统，进行操作。参照：[安装教程地址，菜鸟教程](https://www.runoob.com/python/python-install.html)。
 
-2. 安装mysql
+2.安装mysql
 
     1.mysql的安装也非常的简单，此处久不多讲。
 
@@ -41,7 +41,28 @@
 
 >  pip命令是基于python2.x版本的，pip3是基于python3.x版本因此可以强制使用最新版本。       
 
+    2. 声称数据库镜像。
+*创建数据库。
 
+> settings.py 里面的DATABASES
+
+
+* 执行以下命令：
+> python manage.py makemigrations
+
+    'NAME': "kaishen" 是数据库的名字。
+    创建数据库：create database kaishen;
+
+> python manage.py migrate
+
+    ----生成镜像命令
+
+
+> 运行  python3  manage.py runserver
+
+    3. 管理段地址
+
+> http://127.0.0.1:8000/admin/login/?next=/admin/
 #### 安装教程
 
 
