@@ -18,7 +18,28 @@
 
 3.安装Django框架和mysql依赖
     
-    *p
+    首先安装pip工具。shell下执行一下命令（linux命令）。
+
+> sudo easy_install pip
+
+   输入用户名和密码，即可安装。
+    
+  1.安装Django框架
+
+> pip install Django (option version)
+
+  2.安装pymysql包
+
+> pip install pymysql
+
+可能会遇到的问题：
+ 
+    1. pip版本不对
+
+* pip install --upgrade pip  更新pip版本
+* 将pip命令换成pip3命令
+
+>  pip命令是基于python2.x版本的，pip3是基于python3.x版本因此可以强制使用最新版本。       
 
 
 #### 安装教程
