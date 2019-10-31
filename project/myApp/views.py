@@ -8,14 +8,10 @@ import os
 import random
 from django.conf  import settings
 # Create your views here.
-def index(request):
-    #return HttpResponse("sunck is a good man")
-    return render(request,'myApp/index.html')
-
 
 def students(request):
     studentsList=Students.stuObj2.all()
-    return render(request,'myApp/students.html',{"students":studentsList})
+    return render(request, 'myApp/app/students.html', {"students":studentsList})
 
 def students2(request):
     # 报异常
@@ -26,7 +22,7 @@ def students2(request):
 # 显示前5个学生
 def students3(request):
     studentsList = Students.stuObj2.all()[0:5] # 最后一个不算
-    return render(request, 'myApp/students.html', {"students": studentsList})
+    return render(request, 'myApp/app/students.html', {"students": studentsList})
 
 # 分页显示学生
 def stupage(request,page):
@@ -35,7 +31,7 @@ def stupage(request,page):
     # page*5
     page=int(page)
     studentsList=Students.stuObj2.all()[(page-1)*5:page*5]
-    return render(request,'myApp/students.html',{"students":studentsList})
+    return render(request, 'myApp/app/students.html', {"students":studentsList})
 
 from django.db.models import Max,Min,F,Q
 
@@ -54,7 +50,7 @@ def studentsearch(request):
     studentsList =Students.stuObj2.filter(Q(pk__lte=3) | Q(sage__gt=50))
     # maxAge=Students.stuObj2.aggregate(Max('sage'))
     # print(maxAge)
-    return render(request,'myApp/students.html',{"students":studentsList})
+    return render(request, 'myApp/app/students.html', {"students":studentsList})
 
 def addstudent(request):
     grade=Grades.objects.get(pk=1)
@@ -111,9 +107,8 @@ def login(request):
             messages.success(request,"账号密码错误")
             return redirect('/login/')
     # 如果是GET请求，就说明是用户刚开始登录，使用URL直接进入登录页面的
-    return render(request,'myApp/login.html')
+    return render(request, 'myApp/app/login.html')
 
-@check_login
 def index(request):
     # students=Students.objects.all()  ## 说明，objects.all()返回的是二维表，即一个列表，里面包含多个元组
     # return render(request,'index.html',{"students_list":students})
@@ -123,9 +118,9 @@ def index(request):
     userobj=Users.objects.filter(id=user_id1)
     print(userobj)
     if userobj:
-        return render(request,'myApp/index.html',{"user":userobj[0]})
+        return render(request, 'myApp/index/index.html')
     else:
-        return render(request,'myApp/index.html',{'user','匿名用户'})
+        return render(request, 'myApp/index/index.html')
 
 def adduser(request):
     if request.method=="POST":
@@ -137,18 +132,18 @@ def adduser(request):
         print(user_name)
         test1 = Users(user_name=user_name,user_password=user_password,user_mail=user_mail,user_phone=user_phone,creator_id=creator_id)
         test1.save()
-    return render(request,'myApp/login.html')
+    return render(request, 'myApp/app/login.html')
 
 def to_adduser(request):
-    return render(request,'myApp/adduser.html')
+    return render(request, 'myApp/app/adduser.html')
 
 def to_change(request):
-    return render(request,'myApp/changepassword.html')
+    return render(request, 'myApp/app/changepassword.html')
 
 def logout(request):
     request.session['is_login']='0'
 
-    return render(request,'myApp/login.html')
+    return render(request, 'myApp/app/login.html')
 
 def changepassword(request):
     user_name=request.POST.get('user_name')

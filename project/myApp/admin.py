@@ -80,7 +80,7 @@ class GradesAdmin(admin.ModelAdmin):
     ]
 
 
-    # 注册要管理的对象
+# 注册要管理的对象
 admin.site.register(Grades,GradesAdmin)
 admin.site.register(Students)
 admin.site.register(Users,UsersAdmin)
@@ -90,3 +90,4 @@ admin.site.register(Inform,InformAdmin)
 admin.site.register(Collect,CollectAdmin)
 admin.site.register(Message,MessageAdmin)
 admin.site.register(Jurisdiction,JurisdictionAdmin)
+
