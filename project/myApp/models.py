@@ -8,13 +8,13 @@ from django.utils import timezone
 from datetime import *
 '''
 # Create your models here.
-# 用户类
-class Users(models.Model):
-    user_id=models.IntegerField(verbose_name="用户id",default=1)
-    user_name=models.CharField(verbose_name="用户名",max_length=20,default=1) # 用户名
+# 用户类（合并auth user）
+class Users(AbstractUser):
+    user_id=models.IntegerField(verbose_name="用户id")
+    username=models.CharField(verbose_name="用户名",max_length=20,default="admin") # 用户名
     #login_id=models.IntegerField(verbose_name="登陆id")   #用户登陆id
     #editable 加上去就不显示
-    user_password=models.CharField(verbose_name="登陆密码",editable=False,max_length=20,default="12345678") # 用户密码
+    password=models.CharField(verbose_name="登陆密码",editable=False,max_length=20,default="12345678") # 用户密码
     user_phone=models.CharField(verbose_name="手机号码",max_length=20,default=1) #电话
     user_mail=models.CharField(verbose_name="邮箱",max_length=20,default=1) # 邮箱
     isInform=models.BooleanField(verbose_name="是否推送最新通知",default=True) # 是否通知
@@ -34,13 +34,18 @@ class Users(models.Model):
     # fatheruser_id=models.IntegerField()#父亲用户ID
     #relevanceKey=models.CharField(max_length=20)#关联Key
     img = models.ImageField(verbose_name="头像",null=True, blank=True, upload_to="upload")# 上传图片
+
+    USERNAME_FIELD = 'id'
+
     class Meta:
-        #verbose_name = '用户管理'
-        verbose_name_plural = '普通用户管理'
-    @classmethod
-    def createuser(cls, userName,userPasswd, userPhone, userMail ):
-        u = cls(user_name=userName, user_password =userPasswd, user_phone=userPhone, user_mail=userMail)
-        return u
+        #指定表名
+        db_table = 'myApp_users'
+        verbose_name = '用户管理'
+        verbose_name_plural = verbose_name
+   # @classmethod
+    #def createuser(cls, userName,userPasswd, userPhone, userMail ):
+     #   u = cls(user_name=userName, password =userPasswd, user_phone=userPhone, user_mail=userMail)
+      #  return u
 
 # 通知类
 class Inform(models.Model):

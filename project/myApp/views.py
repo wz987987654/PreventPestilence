@@ -9,6 +9,16 @@ import random
 from django.conf  import settings
 # Create your views here.
 
+#跳转到登陆画面
+def toLogin(request):
+    return render(request,"myApp/user/login.html")
+#登陆
+def dologin(request):
+    return render(request, "myApp/user/register.html")
+#跳转到注册画面
+def toRegisters(request):
+    return render(request,"myApp/user/register.html")
+
 def students(request):
     studentsList=Students.stuObj2.all()
     return render(request, 'myApp/app/students.html', {"students":studentsList})

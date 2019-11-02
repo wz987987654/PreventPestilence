@@ -6,3 +6,7 @@
   background: whitesmoke;
   overflow: hidden;
 }
+.login-wrap{
+	background: url('/static/image/back.jpg') center top no-repeat !important;
+	background-size: cover;
+}

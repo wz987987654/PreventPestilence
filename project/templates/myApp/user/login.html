@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{%  load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="applicable-device" content="pc,mobile">
+    <!-- Bootstrap core CSS -->
+    <link href="https://img.jigao616.com/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://img.jigao616.com/css/style.css" rel="stylesheet">
+    <link href="{% static 'css/common/common.css' %}" rel="stylesheet">
+    <link href="{% static 'css/login/login.css' %}" rel="stylesheet">
+    <title>登陆</title>
+
+    <!--JQUERY -->
+    <!--模版的方式渲染本地的jquery。这里也可以去渲染服务 -->
+    <script src="{% static 'lib/jquery-3.1.1.min.js' %}"></script>
+    <script src="https://img.jigao616.com/js/html5shiv.min.js"></script>
+    <script src="/static/script/common/common.js"></script>
+    <script src="/static/script/index/index.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-diy">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">预测</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/index"><img src="{% static 'image/logo.png' %}" alt="疾病预防主页"></a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <!-- 右侧 -->
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="https://www.jigao616.com/">首页</a></li>
+                        <li><a href="https://www.jigao616.com/zhuanlipinggu.aspx">数据预测</a></li>
+                    </ul>
+                    <!-- 左侧-->
+                     <ul id="top1_denglu" class="nav navbar-nav navbar-right">
+                        <li><a href="/user/login">登录</a></li>
+                        <li><a href="/user/register">注册</a></li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+
+    <div class="login-wrap" style="height: 782px;">
+          <div class="form-popover">
+              <div class="form-hd">Hi，疾病预防中心！</div>
+              <div class="form-body">
+                  <form method="post" action="/user/dologin"  id="from1">
+                      {% csrf_token %}
+                  <div class="form-row">
+                      <div class="hd">手机号码</div>
+                      <div class="bd">
+                          <input name="username" type="text" id="username" placeholder="您的手机号码">
+
+                      </div>
+                  </div>
+
+                  <div class="form-row">
+                      <div class="hd">邮箱地址</div>
+                      <div class="bd">
+                          <input name="email" type="text" id="email" placeholder="邮箱地址">
+                      </div>
+                  </div>
+
+                  <div class="form-row">
+                      <div class="hd">密码</div>
+                      <div class="bd">
+                          <input name="password" type="password" id="password" placeholder="密码">
+                      </div>
+                  </div>
+
+                  <div class="form-row">
+                      <div class="hd">密码</div>
+                      <div class="bd">
+                          <input name="password2" type="password" id="password2" placeholder="重复输入密码">
+                      </div>
+                  </div>
+
+                  <div class="form-footer">
+                      <input type="submit" name="Button1" value="&nbsp;&nbsp;用户注册&nbsp;&nbsp;" onclick="" id="Button1" class="btn btn-submit">
+                      <span id="tishi" style="color :red"></span>
+
+                      <span data-val-controltovalidate="email" data-val-errormessage="请输入邮箱地址" data-val-display="Dynamic" data-val-validationgroup="a" id="Requr1" data-val="true" data-val-evaluationfunction="RequiredFieldValidatorEvaluateIsValid" data-val-initialvalue="" style="color:#FF3300;display:none;">请输入邮箱地址</span>
+                      <span data-val-controltovalidate="username" data-val-errormessage="请输入用户名" data-val-display="Dynamic" data-val-validationgroup="a" id="Rtor1" data-val="true" data-val-evaluationfunction="RequiredFieldValidatorEvaluateIsValid" data-val-initialvalue="" style="color:#FF3300;display:none;">请输入用户名</span>
+                      <span data-val-controltovalidate="password" data-val-errormessage="请输入密码" data-val-display="Dynamic" data-val-validationgroup="a" id="Requr1" data-val="true" data-val-evaluationfunction="RequiredFieldValidatorEvaluateIsValid" data-val-initialvalue="" style="color:#FF3300;display:none;">请输入密码</span>
+                      <span data-val-controltovalidate="password2" data-val-errormessage="俩次密码输入不一致" data-val-display="Dynamic" data-val-validationgroup="a" id="Cr1" data-val="true" data-val-evaluationfunction="CompareValidatorEvaluateIsValid" data-val-controltocompare="password" data-val-controlhookup="password" style="color:#FF3300;display:none;">俩次密码输入不一致</span>
+                  </div>
+              </form>
+          </div>
+
+          </div>
+    </div>
+
+<div class="footer">
+    <p>
+        <a href="javascript:void(0)">关于我们</a>
+        <span class="line">|</span>
+        <a href="javascript:void(0)">联系我们</a>
+        <span class="line"></span>
+    </p>
+    <p>Copyright © 2018 All Rights Reserved. </p>
+    <p> <a href="javascript:void(0)" target="_blank" rel="nofollow">XICP备xxxxx号-x</a>公网安备 xxxxxxxxxx号 归宁夏大学所有</p>
+</div>
+</body>
+</html>

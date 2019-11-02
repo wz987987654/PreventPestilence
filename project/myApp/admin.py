@@ -8,14 +8,14 @@ admin.site.site_title = '登录系统后台'
 admin.site.index_title = '后台管理'
 
 class UsersAdmin(admin.ModelAdmin):
-    list_display = ['id','user_name',
+    list_display = ['id','username',
                     #'login_id',
                     'user_mail','user_phone','isInform',
                     'isMail','user_type','power_type','creator_id','update_id',
                    'lastTime','createTime',# 'isDel','img'
                     ]
-    list_filter = ['user_name']
-    search_fields = ['user_name']  # 查找
+    list_filter = ['username']
+    search_fields = ['username']  # 查找
     list_per_page = 5
 
 class RawdataAdmin(admin.ModelAdmin):

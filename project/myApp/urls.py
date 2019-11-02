@@ -2,8 +2,14 @@ from django.conf.urls import url
 from . import views
 urlpatterns=[
 
-    # 登陆
+    # 主页
     url(r'^index/$', views.index, name="index"),
+
+    #用户
+    url(r'^user/login$', views.toLogin, name="login"),
+    url(r'^user/dologin$', views.dologin, name="dologin"),
+    url(r'^user/register$', views.toRegisters, name="register"),
+
 
     #
     # url(r'^$',views.index),
