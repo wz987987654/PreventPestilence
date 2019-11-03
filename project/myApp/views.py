@@ -21,32 +21,41 @@ class RegisterView(View):
     #注册处理
     def post(self,request):
 
-        userName = request.POST.get("username");
+        username = request.POST.get("username");
         tel = request.POST.get("tel");
         email = request.POST.get("email");
         password = request.POST.get("password");
         password2 = request.POST.get("password2");
+        msg = ""
+        rep_dict = dict(tel=tel,username=username,email=email,password=password,password2=password2)
+        if (not all([username,email,password,password2,tel])):
+            msg="用户输入的信息不能为空"
+            rep_dict["msg"] = msg
+            return render(request, "myApp/user/register.html",rep_dict)
 
-        if (not all([userName,email,password,password2,tel])):
-            return render(request, "myApp/user/register.html",{"msg":"画面中必须全部输入"})
-
-        if (not re.match(r'^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$',tel)):
-            return render(request, "myApp/user/register.html",{"msg","手机号码格式不正确"})
+       # if (not re.match(r'^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$',tel)):
+        #    return render(request, "myApp/user/register.html",{"msg":"手机号码格式不正确"})
 
         if (not re.match(r'^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$',email)):
-            return render(request, "myApp/user/register.html", {"msg": "邮箱格式不对"})
+            msg = "邮箱输入错误"
+            rep_dict["msg"] = msg
+            return render(request, "myApp/user/register.html", rep_dict)
 
         if (password != password2):
-            return render(request, "myApp/user/register.html", {"msg": "两次密码不一致"})
+            msg = "两次密码不一致"
+            rep_dict["msg"] = msg
+            rep_dict.pop("password")
+            rep_dict.pop("password2")
+            return render(request, "myApp/user/register.html", rep_dict)
 
         #TODO
-        user = User.Objects.create_user(userName,email,password)
+        user = User.Objects.create_user(username,email,password)
 
         user.is_active = 0
 
         user.save()
 
-        return  render(request, "myApp/index/index.html", {"userName":userName})
+        return  render(request, "myApp/index/index.html", {"userName":username})
 
 
 #跳转到登陆画面

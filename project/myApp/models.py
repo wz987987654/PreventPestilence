@@ -41,10 +41,11 @@ class Users(AbstractUser):
         db_table = 'myApp_users'
         verbose_name = '用户管理'
         verbose_name_plural = verbose_name
-   # @classmethod
-    #def createuser(cls, userName,userPasswd, userPhone, userMail ):
-     #   u = cls(user_name=userName, password =userPasswd, user_phone=userPhone, user_mail=userMail)
-      #  return u
+
+    @classmethod
+    def createuser(cls, userName,userPasswd, userPhone, userMail ):
+        u = cls(user_name=userName, password =userPasswd, user_phone=userPhone, user_mail=userMail)
+        return u
 
 # 通知类
 class Inform(models.Model):
