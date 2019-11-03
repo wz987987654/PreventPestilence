@@ -10,7 +10,6 @@ from datetime import *
 # Create your models here.
 # 用户类（合并auth user）
 class Users(AbstractUser):
-    user_id=models.IntegerField(verbose_name="用户id")
     username=models.CharField(verbose_name="用户名",max_length=20,default="admin") # 用户名
     #login_id=models.IntegerField(verbose_name="登陆id")   #用户登陆id
     #editable 加上去就不显示

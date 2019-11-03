@@ -17,8 +17,8 @@
     <!--模版的方式渲染本地的jquery。这里也可以去渲染服务 -->
     <script src="{% static 'lib/jquery-3.1.1.min.js' %}"></script>
     <script src="https://img.jigao616.com/js/html5shiv.min.js"></script>
-    <script src="/static/script/common/common.js"></script>
-    <script src="/static/script/index/index.js"></script>
+    <script src="{% static 'script/common/common.js' %}"></script>
+    <script src="{% static 'script/login/login.js' %}"></script>
 </head>
 <body>
 
@@ -54,15 +54,14 @@
               <div class="form-body">
                   <form method="post" action="/user/dologin"  id="from1">
                       {% csrf_token %}
-                  <div class="form-row">
+                  <div class="form-row" id="teldiv">
                       <div class="hd">手机号码</div>
                       <div class="bd">
                           <input name="username" type="text" id="username" placeholder="您的手机号码">
-
                       </div>
                   </div>
 
-                  <div class="form-row">
+                  <div class="form-row" id="emaildiv" style="display: none">
                       <div class="hd">邮箱地址</div>
                       <div class="bd">
                           <input name="email" type="text" id="email" placeholder="邮箱地址">
@@ -83,8 +82,15 @@
                       </div>
                   </div>
 
+                  <div class="checkbox">
+                      <label>
+                           <input name="cb1" type="checkbox" id="cb1"> 登陆保持90天
+                      </label>
+                  </div>
+
                   <div class="form-footer">
-                      <input type="submit" name="Button1" value="&nbsp;&nbsp;用户注册&nbsp;&nbsp;" onclick="" id="Button1" class="btn btn-submit">
+                      <input type="submit" name="Button1" value="&nbsp;&nbsp;用户登陆&nbsp;&nbsp;" onclick="" id="Button1" class="btn btn-submit"><br><br>
+                      <input type="button" name="button2" value="&nbsp;&nbsp;邮箱登陆&nbsp;&nbsp;" onclick="" id="switch" class="btn btn-submit">
                       <span id="tishi" style="color :red"></span>
 
                       <span data-val-controltovalidate="email" data-val-errormessage="请输入邮箱地址" data-val-display="Dynamic" data-val-validationgroup="a" id="Requr1" data-val="true" data-val-evaluationfunction="RequiredFieldValidatorEvaluateIsValid" data-val-initialvalue="" style="color:#FF3300;display:none;">请输入邮箱地址</span>

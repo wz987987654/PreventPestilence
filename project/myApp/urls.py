@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from . import views
+from myApp.views import RegisterView
 urlpatterns=[
 
     # 主页
@@ -8,7 +9,9 @@ urlpatterns=[
     #用户
     url(r'^user/login$', views.toLogin, name="login"),
     url(r'^user/dologin$', views.dologin, name="dologin"),
-    url(r'^user/register$', views.toRegisters, name="register"),
+    url(r'^user/register$', RegisterView.as_view(), name="register"),
+    url(r'^user/doRegister$', RegisterView.as_view(), name="doRegister"),
+
 
 
     #

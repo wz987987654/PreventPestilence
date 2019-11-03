@@ -47,17 +47,24 @@
             </div>
         </nav>
 
-    <div class="login-wrap" style="height: 782px;">
+    <div class="login-wrap" style="height: 820px;">
           <div class="form-popover">
-              <div class="form-hd">Hi，欢迎来到疾病预防中心！</div>
+              <div class="form-hd">欢迎注册</div>
               <div class="form-body">
-                  <form method="post" action="/user/dologin"  id="from1">
+                  <form method="post" action="/user/doRegister"  id="from1">
+                    {% csrf_token %}
+
+                      <div class="form-row">
+                          <div class="hd">用户名</div>
+                          <div class="bd">
+                              <input name="username" type="text" id="username" placeholder="用户名">
+                          </div>
+                        </div>
 
                   <div class="form-row">
                       <div class="hd">手机号码</div>
                       <div class="bd">
-                          <input name="username" type="text" id="username" placeholder="您的手机号码">
-
+                          <input name="tel" type="text" id="tel" placeholder="您的手机号码">
                       </div>
                   </div>
 
@@ -92,20 +99,19 @@
                       <span data-val-controltovalidate="password2" data-val-errormessage="俩次密码输入不一致" data-val-display="Dynamic" data-val-validationgroup="a" id="Cr1" data-val="true" data-val-evaluationfunction="CompareValidatorEvaluateIsValid" data-val-controltocompare="password" data-val-controlhookup="password" style="color:#FF3300;display:none;">俩次密码输入不一致</span>
                   </div>
               </form>
-          </div>
-
+            </div>
           </div>
     </div>
 
-<div class="footer">
-    <p>
-        <a href="javascript:void(0)">关于我们</a>
-        <span class="line">|</span>
-        <a href="javascript:void(0)">联系我们</a>
-        <span class="line"></span>
-    </p>
-    <p>Copyright © 2018 All Rights Reserved. </p>
-    <p> <a href="javascript:void(0)" target="_blank" rel="nofollow">XICP备xxxxx号-x</a>公网安备 xxxxxxxxxx号 归宁夏大学所有</p>
-</div>
+    <div class="footer">
+        <p>
+            <a href="javascript:void(0)">关于我们</a>
+            <span class="line">|</span>
+            <a href="javascript:void(0)">联系我们</a>
+            <span class="line"></span>
+        </p>
+        <p>Copyright © 2018 All Rights Reserved. </p>
+        <p> <a href="javascript:void(0)" target="_blank" rel="nofollow">XICP备xxxxx号-x</a>公网安备 xxxxxxxxxx号 归宁夏大学所有</p>
+    </div>
 </body>
 </html>

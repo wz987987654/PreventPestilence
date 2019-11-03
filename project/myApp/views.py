@@ -1,13 +1,53 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,JsonResponse
 from django.contrib import messages
+from django.views import View
+import re
 from .models import Users,Forecast,Students,Grades,StudentsManager
 from functools import wraps
+from django.contrib.auth.models import User
+
 import time
 import os
 import random
 from django.conf  import settings
 # Create your views here.
+
+class RegisterView(View):
+    # 跳转到登陆画面
+    def get(self,request):
+        return render(request, "myApp/user/register.html")
+
+    #注册处理
+    def post(self,request):
+
+        userName = request.POST.get("username");
+        tel = request.POST.get("tel");
+        email = request.POST.get("email");
+        password = request.POST.get("password");
+        password2 = request.POST.get("password2");
+
+        if (not all([userName,email,password,password2,tel])):
+            return render(request, "myApp/user/register.html",{"msg":"画面中必须全部输入"})
+
+        if (not re.match(r'^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$',tel)):
+            return render(request, "myApp/user/register.html",{"msg","手机号码格式不正确"})
+
+        if (not re.match(r'^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$',email)):
+            return render(request, "myApp/user/register.html", {"msg": "邮箱格式不对"})
+
+        if (password != password2):
+            return render(request, "myApp/user/register.html", {"msg": "两次密码不一致"})
+
+        #TODO
+        user = User.Objects.create_user(userName,email,password)
+
+        user.is_active = 0
+
+        user.save()
+
+        return  render(request, "myApp/index/index.html", {"userName":userName})
+
 
 #跳转到登陆画面
 def toLogin(request):
