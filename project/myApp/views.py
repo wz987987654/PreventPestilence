@@ -50,7 +50,6 @@ class RegisterView(View):
 
         #更新方法
         user.save()
-
         return  render(request, "myApp/index/index.html", {"userName":username})
 
 #登陆
