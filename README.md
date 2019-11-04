@@ -35,6 +35,9 @@
 
 > pip install pymysql
 
+  3.安装加密包itsdangerous
+> pip3 install itsdangerous
+
 可能会遇到的问题：
  
     1. pip版本不对
