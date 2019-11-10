@@ -38,6 +38,20 @@
   3.安装加密包itsdangerous
 > pip3 install itsdangerous
 
+
+4.安装redis
+
+> 1.在 Ubuntu 系统安装 Redis 可以使用以下命令:
+  * $sudo apt-get update
+  * $sudo apt-get install redis-server
+
+> 启动 Redis (命令的形式)
+  * $ redis-server
+
+> 查看 redis 是否启动？
+  * $ redis-cli
+     
+
 可能会遇到的问题：
  
     1. pip版本不对
