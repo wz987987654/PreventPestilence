@@ -35,6 +35,23 @@
 
 > pip install pymysql
 
+  3.安装加密包itsdangerous
+> pip3 install itsdangerous
+
+
+4.安装redis
+
+> 1.在 Ubuntu 系统安装 Redis 可以使用以下命令:
+  * $sudo apt-get update
+  * $sudo apt-get install redis-server
+
+> 启动 Redis (命令的形式)
+  * $ redis-server
+
+> 查看 redis 是否启动？
+  * $ redis-cli
+     
+
 可能会遇到的问题：
  
     1. pip版本不对
@@ -68,6 +85,11 @@
 > http://127.0.0.1:8000/admin/login/?next=/admin/
 
 #### 数据库设计
+
+1. 详细参照er图，db.excle
+
+2.其他一些店。
+    *  关键字段进行加密。比如说用户密码存入到数据库里面是存放大暗文。防止盗库。
 
 
 
