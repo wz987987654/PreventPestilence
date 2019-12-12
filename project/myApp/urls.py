@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from . import views
 from myApp.views import RegisterView
+from myApp.views import ActiveView
 urlpatterns=[
 
     # 主页
@@ -11,6 +12,7 @@ urlpatterns=[
     url(r'^user/dologin$', views.dologin, name="dologin"),
     url(r'^user/register$', RegisterView.as_view(), name="register"),
     url(r'^user/doRegister$', RegisterView.as_view(), name="doRegister"),
+    url(r'^user/active/(?P<token>.*)$',ActiveView.as_view() , name="active$"),
 
 
 

@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret key used in production secret! 可以作为产品密钥
 SECRET_KEY = 'w#7n*h*td3cpt5h)e=zgk4vwh&x3)2qsmd^uku5zzl2!4!p%6f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -129,3 +129,23 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR,"static")
 ]
+
+# 发送邮件配置
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_USE_SSL= True   #是否使用TLS安全传输协议
+EMAIL_PORT = 465
+
+EMAIL_SUBJECT_PREFIX = u'[Hyct疾病预防中]'
+
+# 发送邮件的邮箱
+EMAIL_HOST_USER = '294403373@qq.com'
+
+# 发送邮件的授权码    gcl142536@@.
+EMAIL_HOST_PASSWORD = 'dkhafgqsflsjbhhg'
+
+#  收件人看到的发件人
+EMAIL_FROM = '294403373@qq.com'
+
+SERVER_EMAIL = EMAIL_HOST_USER
+
