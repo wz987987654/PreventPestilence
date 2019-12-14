@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{%  load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="applicable-device" content="pc,mobile">
+    <!-- Bootstrap core CSS -->
+    <link href="https://img.jigao616.com/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://img.jigao616.com/css/style.css" rel="stylesheet">
+    <link href="/static/css/common/common.css" rel="stylesheet">
+    <title>预测</title>
+
+    <!--JQUERY -->
+    <!--模版的方式渲染本地的jquery。这里也可以去渲染服务 -->
+    <script src="{% static 'lib/jquery-3.1.1.min.js' %}"></script>
+    <script src="https://img.jigao616.com/js/html5shiv.min.js"></script>
+    <script src="/static/script/common/common.js"></script>
+    <script src="/static/script/index/index.js"></script>
+</head>
+<body>
+        <nav class="navbar navbar-diy">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">预测</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/index"><img src="{% static 'image/logo1.png' %}" alt="疾病预警系统主页"></a>
+                </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <!-- 右侧 -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/index">首页</a></li>
+                    <li><a href="#">数据预测</a></li>
+                </ul>
+                <!-- 左侧-->
+                 <ul id="top1_denglu" class="nav navbar-nav navbar-right">
+                    <li><a href="/user/login">登录</a></li>
+                    <li><a href="/user/register">注册</a></li>
+                </ul>
+            </div>
+
+            </div>
+        </nav>
+
+        <div class="wrap">
+            <div class="container">
+                <div class="row">
+                    <!--搜索榄 -->
+                    <div class="col-search-list col-topbar">
+                        <div class="soinbox">
+                            <div class="so-in-search">
+                                <input type="text" value="" placeholder="疾病预警、二氧化碳" class="in-control" id="search_text" name="search_text" onkeydown="">
+        						<button class="btn-inbar" onclick=""></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="predictMap" id="predictMap">
+                        暂时没有数据
+                    </div>
+                </div>
+
+                <div class="map">
+                    
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <p>
+                <a href="javascript:void(0)">关于我们</a>
+                <span class="line">|</span>
+                <a href="javascript:void(0)">联系我们</a>
+                <span class="line"></span>
+            </p>
+            <p>Copyright © 2018 All Rights Reserved. </p>
+            <p> <a href="javascript:void(0)" target="_blank" rel="nofollow">XICP备xxxxx号-x</a>公网安备 xxxxxxxxxx号 归xxx所有</p>
+         </div>
+</body>
+</html>
