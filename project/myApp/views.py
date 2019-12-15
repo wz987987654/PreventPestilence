@@ -82,6 +82,7 @@ class RegisterView(View):
         serialier_id_token = serializer.dumps(info)
         serialier_id_token = serialier_id_token.decode()
 
+        #定义的发送邮件的方法；异步
         send_register_active_email(user.email,user.username,serialier_id_token)
 
         return render(request, "myApp/index/index.html", {"userName": username})
@@ -144,6 +145,7 @@ def index(request):
 
 #暂时作为临时方法，以后用于celert
 def send_register_active_email(to_main_user_mail, username, token):
+
     # 链接包含用户id  http://127.0.0.1:8080/user/active/{userId}?唯一id
 
     msg11 = "<h1>%s疾病预警系统欢迎您注册用户，点击下面链接进行激活：<h1><a hrefd='http://127.0.0.1:8080/user/active/%s'>http://127.0.0.1:8080/user/active/%s</a>" % (username, token, token)
