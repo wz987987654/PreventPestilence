@@ -12,10 +12,9 @@ urlpatterns=[
     url(r'^user/dologin$', views.dologin, name="dologin"),
     url(r'^user/register$', RegisterView.as_view(), name="register"),
     url(r'^user/doRegister$', RegisterView.as_view(), name="doRegister"),
-    url(r'^forecast/forecast$', views.forecast, name="forecast"),
+    url(r'^forecast/chinamap$', views.forecast, name="forecast"),
 
     url(r'^user/active/(?P<token>.*)$',ActiveView.as_view() , name="active$"),
-
 
 
     #

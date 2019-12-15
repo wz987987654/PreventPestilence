@@ -8,4 +8,4 @@ values = list(province_distribution.values())
 map = Map("中国地图", '中国地图', width=1200, height=600)
 map.add("", provice, values, visual_range=[0, 50], maptype='china', is_visualmap=True,
         visual_text_color='#000')
-map.render(path="中国地图.html")
+map.render(path="chinamap.html")

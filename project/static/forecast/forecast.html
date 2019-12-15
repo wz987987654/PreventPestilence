@@ -10,7 +10,7 @@
     <link href="https://img.jigao616.com/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://img.jigao616.com/css/style.css" rel="stylesheet">
     <link href="/static/css/common/common.css" rel="stylesheet">
-    <title>主页</title>
+    <title>预测</title>
 
     <!--JQUERY -->
     <!--模版的方式渲染本地的jquery。这里也可以去渲染服务 -->
@@ -34,7 +34,7 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <!-- 右侧 -->
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">首页</a></li>
+                    <li class="active"><a href="/index">首页</a></li>
                     <li><a href="#">数据预测</a></li>
                 </ul>
                 <!-- 左侧-->
@@ -54,15 +54,21 @@
                     <div class="col-search-list col-topbar">
                         <div class="soinbox">
                             <div class="so-in-search">
-                                <input type="text" value="" placeholder="疾病预防、二氧化碳" class="in-control" id="search_text" name="search_text" onkeydown="">
+                                <input type="text" value="" placeholder="疾病预警、二氧化碳" class="in-control" id="search_text" name="search_text" onkeydown="">
         						<button class="btn-inbar" onclick=""></button>
                             </div>
                         </div>
+
                     </div>
 
-                    <div class="predictMap" id="predictMap" style="height: 800px;">
-                        <iframe align="center" width="100%" height="100%" src="{% static '/forecast/chinamap.html' %}"  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    <div class="predictMap" id="predictMap">
+                        暂时没有数据
                     </div>
+                </div>
+
+                <div class="map">
+                    
+
                 </div>
             </div>
         </div>
@@ -76,7 +82,7 @@
                 <span class="line"></span>
             </p>
             <p>Copyright © 2018 All Rights Reserved. </p>
-            <p> <a href="javascript:void(0)" target="_blank" rel="nofollow">XICP备xxxxx号-x</a>公网安备 xxxxxxxxxx号 归XXX所有</p>
+            <p> <a href="javascript:void(0)" target="_blank" rel="nofollow">XICP备xxxxx号-x</a>公网安备 xxxxxxxxxx号 归xxx所有</p>
          </div>
 </body>
 </html>

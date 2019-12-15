@@ -251,4 +251,5 @@ def send_register_active_email(to_main_user_mail, username, token):
 
 
 def forecast(request):
-    return render(request,"myApp/forecast/中国地图.html")
+    print("a")
+    return render(request, "myApp/forecast/chinamap.html")
