@@ -25,7 +25,6 @@ class RegisterView(View):
 
     #注册处理
     def post(self,request):
-
         username = request.POST.get("username");
         tel = request.POST.get("tel");
         email = request.POST.get("email");
@@ -83,8 +82,14 @@ class RegisterView(View):
         serialier_id_token = serialier_id_token.decode()
 
         #定义的发送邮件的方法；异步
-        send_register_active_email(user.email,user.username,serialier_id_token)
-
+        try:
+            #测试方法
+            #raise Exception("测试")
+            send_register_active_email(user.email,user.username,serialier_id_token)
+        except Exception as e:
+            #print(e)
+            #return render(request, "myApp/common/error.html", {"msg": "邮件发送失败，请检查相应配置或者联系管理员","jump_index":"http://127.0.0.1:8000/index/"})
+            return render(request, "myApp/index/index.html", {"userName": username})
         return render(request, "myApp/index/index.html", {"userName": username})
 
 
@@ -109,17 +114,71 @@ class Login(View):
     def get(self,request):
         return render(request,"myApp/user/login.html")
     def post(self,request):
+
         # 1 画面输入项目的检查
-            # 1.1 输入项目不能为空
-            # 1.2  输入项目必须合法
+        tel = request.POST.get("tel");
+        email = request.POST.get("email");
+        password = request.POST.get("password");
+        password2 = request.POST.get("password2");
+        cb1 = request.POST.get("cb1");
+
+        # 1.1 输入项目不能为空
+        rep_dict = dict(tel=tel, email=email, password=password, password2=password2)
+
+        if (not all([password, password2])):
+            msg = "密码不能为空"
+            rep_dict["msg"] = msg
+            return render(request, "myApp/user/login.html", rep_dict)
+
+        if (not all([tel]) and not all([email])):
+            msg = "电话号码或者邮箱必修输入"
+            rep_dict["msg"] = msg
+            return render(request, "myApp/user/login.html", rep_dict)
+
+        if (password != password2):
+            msg = "两次密码不一致"
+            rep_dict["msg"] = msg
+            rep_dict.pop("password")
+            rep_dict.pop("password2")
+            return render(request, "myApp/user/login.html", rep_dict)
+
+        if ( all([tel,email])):
+            return render(request, "myApp/common/error.html",{"msg": "系统受到外部攻击，请联系管理员", "jump_index": "http://127.0.0.1:8000/index/"})
+
+        # 1.2  输入项目必须合法 ,排除一些关键字，不如说 script ,比如说# ,比如说 delete ********
 
         # 2 根据db存放数据进行比较
-            # 邮箱
+        # 2.1 验证邮箱
+            user_by_email =  authenticate(email=email)
+
+            if user_by_email is None:
+                msg = "用户不存在，请注册!"
+                rep_dict["msg"] = msg
+                return render(request, "myApp/user/register.html", rep_dict)
+
+            auth_password = user_by_email.password;
+
+            if (password  != auth_password):
+                msg = "密码输入有误"
+                rep_dict["msg"] = msg
+                rep_dict.pop("password")
+                rep_dict.pop("password2")
+                return render(request, "myApp/user/login.html", rep_dict)
+
+            if cb1 is not None:
+                # 有设置redis  TODO
+                pass;
+            # 设置session
+            request.session["user_id"] =  user_by_email.id
+
+            # 3 处理结束跳转画面
+            return render(request, "myApp/index/index.html", {"userName": username})
+
             # 手机号
                 # 验证通过
                     # 判断有没有登陆90天
-                        # 有设置redis  TODO
-                        # 设置session
+
+
                 # 没有
             # 设置session
 
