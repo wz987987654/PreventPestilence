@@ -5,7 +5,7 @@ province_distribution = {'河南': 45.23, '北京': 37.56, '河北': 21, '辽宁
                          '云南': 6, '贵州': 2, '吉林': 3, '山西': 12, '山东': 11, '福建': 4, '青海': 1, '天津': 1, '其他': 1}
 provice = list(province_distribution.keys())
 values = list(province_distribution.values())
-map = Map("中国地图", '中国地图', width=1200, height=600)
+map = Map( width=1200, height=600)
 map.add("", provice, values, visual_range=[0, 50], maptype='china', is_visualmap=True,
         visual_text_color='#000')
 map.render(path="chinamap.html")
