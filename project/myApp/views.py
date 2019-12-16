@@ -114,7 +114,7 @@ class Login(View):
     def get(self,request):
         return render(request, "myApp/user/login.html")
     def post(self,request):
-
+        print("aaa")
         # 1 画面输入项目的检查
         tel = request.POST.get("tel");
         email = request.POST.get("email");
@@ -253,3 +253,6 @@ def send_register_active_email(to_main_user_mail, username, token):
 def forecast(request):
     print("a")
     return render(request, "myApp/forecast/chinamap.html")
+
+def inform(request):
+    return render(request, "myApp/inform/inform.html")

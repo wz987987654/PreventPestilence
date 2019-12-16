@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{%  load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="applicable-device" content="pc,mobile">
+    <!-- Bootstrap core CSS -->
+    <link href="https://img.jigao616.com/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://img.jigao616.com/css/style.css" rel="stylesheet">
+    <link href="/static/css/common/common.css" rel="stylesheet">
+    <title>预测</title>
+
+    <!--JQUERY -->
+    <!--模版的方式渲染本地的jquery。这里也可以去渲染服务 -->
+    <script src="{% static 'lib/jquery-3.1.1.min.js' %}"></script>
+    <script src="https://img.jigao616.com/js/html5shiv.min.js"></script>
+    <script src="/static/script/common/common.js"></script>
+    <script src="/static/script/index/index.js"></script>
+</head>
+<body>
+        <nav class="navbar navbar-diy">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">预测</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/index"><img src="{% static 'image/logo1.png' %}" alt="疾病预警系统主页"></a>
+                </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <!-- 右侧 -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/index">首页</a></li>
+                    <li><a href="#">数据预测</a></li>
+                </ul>
+                <!-- 左侧-->
+                 <ul id="top1_denglu" class="nav navbar-nav navbar-right">
+                    <li><a href="/user/login">登录</a></li>
+                    <li><a href="/user/register">注册</a></li>
+                </ul>
+            </div>
+
+            </div>
+        </nav>
+
+        <div class="wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="clo-md-8">
+                        <!--搜索栏 -->
+                        <div class="col-search-list col-topbar">
+                            <div class="soinbox">
+                                <div class="so-in-search">
+                                    <input type="text" value="" placeholder="疾病预警、二氧化碳" class="in-control" id="search_text" name="search_text" onkeydown="">
+        						<button class="btn-inbar" onclick=""></button>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="col-box">
+                                <div class="col-box-header">
+                                    <div id="PanelZhongshuju">
+                                        <div class="box-header-h3">最新信息</div>
+                                        <div class="box-header-h5">
+                                                    截至2019年12月16日，共有<strong class="text-red">20,150,265</strong>条数据。
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-search-list">
+                        <ul>
+                        <li>
+                          <div class="so-header">
+                              <a href="#" target="_blank" title="一种PIN插装机构制造技术">一种PIN插装机构制造技术</a>
+                          </div>
+                          <div class="so-body">
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种PIN插装机构，包括机架，所述机架上平行设置有两个PIN输送剪切组件、搬运组件以及PIN插装组件，并且每个所述PIN输送剪切组件包括PIN送料件以及与所述PIN送料件相连接的PIN剪切件，所述PIN剪切件用于对所述PIN送料件输出的PIN进行剪切；...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/guangzhoukeshengcekongshebeiyouxiangongsi/">广州科升测控设备有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/huangxiaoping0/">黄小平</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e9%92%9f%e7%a7%8b%e8%89%af">钟秋良</a>，<a href="https://www.jigao616.com/zhuanli/liuyu22/">刘裕</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：24</span>
+                          </div>
+                      </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841898.aspx" target="_blank" title="一种电子器件用安装结构制造技术">一种电子器件用安装结构制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种电子器件用安装结构，包括电子器件主体，所述电子器件主体的两端均安装有引出线，所述电子器件主体的两侧安装有支撑脚，所述电子器件主体的一侧安装有第一夹持杆，所述第一夹持杆的一侧通过铰链安装有第二夹持杆，所述第一夹持杆的一端内侧设置有啮合凹槽，所述第一夹...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/shanghailaiaodianzikejiyouxiangongsi/">上海莱翱电子科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/?q=%e8%b5%b5%e4%b8%96%e8%8c%b9">赵世茹</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：16</span>
+                          </div>
+                      </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841897.aspx" target="_blank" title="一种电子器件贴片装置制造方法及图纸">一种电子器件贴片装置制造方法及图纸</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种电子器件贴片装置，包括机体主体框架，所述机体主体框架的上方之间安装有悬挂架，所述悬挂架的底端安装有灯管，所述机体主体框架的一侧靠上位置处安装有控制面板，所述机体主体框架的另一侧安装有第二电机，所述机体主体框架的下方安装有储物箱，所述储物箱的顶端安装...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/yuetong0/">岳通</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/yuetong0/">岳通</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e9%83%91%e8%b4%a2%e6%98%8e">郑财明</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：16</span>
+                          </div>
+                         </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841896.aspx" target="_blank" title="一种新型贴片机用吸嘴制造技术">一种新型贴片机用吸嘴制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种新型贴片机用吸嘴，其结构包括吸嘴本体、吸嘴杆、固定扣、连接盘、吸嘴头、定位槽、连接装置和缓冲装置，通过设置连接装置，将氢化丁腈橡胶密封垫放置到定位槽中，保证设备连接的密封性，通过顶盖与吸嘴杆连接固定，将气管与外界设备连接，气管与连接管通过固定盘连接...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/shenzhenshifushijindianzikejiyouxiangongsi/">深圳市富士锦电子科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/huangjiahong1/">黄嘉鸿</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：16</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841895.aspx" target="_blank" title="高速高精度贴装头制造技术">高速高精度贴装头制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                一种表面贴装技术领域的高速高精度贴装头，设有：Z轴升降组件，包括Z轴底板、升降滑座、直线滑轨和直线伺服电机，其中，直线伺服电机设有初级和次级，初级固定在Z轴底板上，次级沿初级上下运动，直线滑轨固定在初级上，次级与直线滑轨滑动连接，升降滑座固定在次级上，随次级上下运动而升降；R轴旋
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/boyinjinggongkejigufenyouxiangongsi/">博众精工科技股份有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/mengjian6/">孟健</a>，<a href="https://www.jigao616.com/zhuanli/wangbo/">王波</a>，<a href="https://www.jigao616.com/zhuanli/zouchunhua/">邹春花</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e4%bb%98%e6%b1%9f%e6%b3%a2">付江波</a>，<a href="https://www.jigao616.com/zhuanli/gaoyao3/">高尧</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e4%be%8d%e8%b4%a4%e9%a3%9e">侍贤飞</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e6%aa%80%e4%bf%8a%e9%98%b3">檀俊阳</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e5%88%98%e6%a0%91%e7%a3%8a">刘树磊</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：18</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841894.aspx" target="_blank" title="自动贴装设备制造技术">自动贴装设备制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开一种自动贴装设备，包括机转盘、上下料机械手、预定位装置、第一供料机、第一取料机械手、第一保压装置以及料站，转盘上具有位于上下料工位、第一贴装工位、第一保压工位的若干治具，上下料机械手在料站、预定位装置及上下料工位之间作动。一第一检测相机与一第二检测相机分...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/dongguanshiwodejingmijixieyouxiangongsi/">东莞市沃德精密机械有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/chencanhua0/">陈灿华</a>，<a href="https://www.jigao616.com/zhuanli/dengchunhua/">邓春华</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e5%bc%a0%e5%8d%8e%e7%a4%bc">张华礼</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e9%82%93%e5%8f%91%e5%8f%8b">邓发友</a>，<a href="https://www.jigao616.com/zhuanli/zhouhaishou/">周海涛</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e9%9f%a6%e6%a0%8b%e5%85%83">韦栋元</a>，<a href="https://www.jigao616.com/zhuanli/lijianping/">李建平</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e5%bc%a0%e4%ba%9a%e6%b2%bb">张亚治</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：15</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841893.aspx" target="_blank" title="一种金手指抓取定位机构制造技术">一种金手指抓取定位机构制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术提供了一种金手指抓取定位机构，包括金手指夹取旋转板，夹爪气缸固定于金手指夹取旋转板上，夹爪气缸的输出轴连接金手指夹爪；直线轴承固定座设于金手指夹取旋转板下方，旋转限位板设于直线轴承固定座上表面，直线轴承固定座底部设有上推气缸，上推气缸的输出轴穿过直线轴承固定...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/youruimatehexinshanghaizidonghuakejiyouxiangongsi/">优瑞玛特合心上海自动化科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/zhangxiaofeng7/">张晓凤</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：13</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841892.aspx" target="_blank" title="一种电子元件加工电路板自动上料机构制造技术">一种电子元件加工电路板自动上料机构制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种电子元件加工电路板自动上料机构，包括传送带和送料架，所述传送带一侧通过焊接架安装送料架，所述送料架内底部开设移动槽，所述送料架内顶部开设料槽，所述料槽内设置推料板，所述移动槽内通过转套安装往复丝杆，所述往复丝杆上套设丝块，所述丝块底端与推料板焊接连...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/lvrui2/">吕瑞</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/lvrui2/">吕瑞</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：11</span>
+                          </div>
+                         </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841891.aspx" target="_blank" title="一种不规则元器件自动化插件装置制造方法及图纸">一种不规则元器件自动化插件装置制造方法及图纸</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开一种不规则元器件自动化插件装置，涉及电子技术领域，解决了常规技术中无法自动化插入不规则元器件的技术弊端，本实用新型专利技术的装置包括工作台，其中所述工作台上设置有皮带输送线，用于传输ＰＣＢ印刷电路板；所述工作台下方设置有支撑装置，用于在插件时支撑ＰＣＢ印...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/ningxialongjiningguangyibiaogufenyouxiangongsi/">宁夏隆基宁光仪表股份有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/zhaosihai/">赵四海</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e6%9b%b9%e7%8c%ae%e7%82%9c">曹献炜</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e5%a7%9a%e6%b0%b8%e5%bd%a9">姚永彩</a>，<a href="https://www.jigao616.com/zhuanli/jinpeng2/">金朋</a>，<a href="https://www.jigao616.com/zhuanli/wangqi0/">王琪</a>，<a href="https://www.jigao616.com/zhuanli/zhangjiping2/">张继平</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e8%b5%b5%e7%81%b5%e8%92%99">赵灵蒙</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：13</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841890.aspx" target="_blank" title="一种身份唯一性检测系统用屏蔽通道技术方案">一种身份唯一性检测系统用屏蔽通道技术方案</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种身份唯一性检测系统用屏蔽通道，包括两块正对设置的侧壁，以及架设在两个所述侧壁顶部的顶壁，两个所述侧壁和所述顶壁之间的形成通行通道；所述侧壁和顶壁均采用金属板制成，其特征在于，两块所述侧壁对称设置，且在竖向上的投影呈相对设置的圆弧形，任一所述侧壁位于...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/chongqingxinliyuankejiyouxiangongsi/">重庆芯力源科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/zhaojun/">赵军</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：6</span>
+                          </div>
+                         </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841889.aspx" target="_blank" title="一种用于基于IDV桌面虚拟化安全管理防护设备制造技术">一种用于基于IDV桌面虚拟化安全管理防护设备制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种用于基于IDV桌面虚拟化安全管理防护设备，防护箱本体的两侧内壁均设置有铅板，铅板的内壁上均贴设有若干半导体制冷片，铅板的外侧均通过设有的一组固定弹簧连接于防护箱本体的内壁上，防护箱本体靠近铅板的侧壁上均插设有螺纹杆，防护箱本体的背面焊接有散热箱。有...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/henanzhihuizhongyuankejifazhanyouxiangongsi/">河南智慧中原科技发展有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/liming/">李明</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e6%96%bd%e7%9a%93%e7%84%b6">施皓然</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e6%96%bd%e9%9b%af%e6%9c%88">施雯月</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e6%96%bd%e9%9d%99%e4%bf%ae">施静修</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：7</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841888.aspx" target="_blank" title="一种抗电磁干扰装置制造方法及图纸">一种抗电磁干扰装置制造方法及图纸</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术实施例公开了一种抗电磁干扰装置。该抗电磁干扰装置包括发送单元、双绞线、第一电阻以及接收单元，双绞线包括第一绞线和第二绞线；第一绞线的第一端和第二绞线的第一端分别与发送单元电连接，第一绞线的第二端和第二绞线的第二端分别与接收单元电连接，第一电阻的第一端与第一绞...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/shanghairunjingnengyuankejiyouxiangongsi/">上海润京能源科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/zhaoxiao0/">赵晓</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e6%88%90%e5%b0%8f%e8%83%9c">成小胜</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：7</span>
+                          </div>
+                         </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841887.aspx" target="_blank" title="拼装式模块电源盒制造技术">拼装式模块电源盒制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种拼装式模块电源盒，属于模块电源技术领域，旨在便于单独更换模块电源盒零件，其技术方案要点是包括方形结构的底板，所述底板上开设有两个侧让位槽，所述侧让位槽内嵌设有与底板连接的侧板，所述侧板相对的表面分别开设有两个边让位槽，所述底板上开设有端让位槽，所述...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/beijingchenglidianyuanyouxiangongsi/">北京承力电源有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/zhangzhiqiang/">张志强</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：6</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841886.aspx" target="_blank" title="适用于表面安装技术的屏蔽组件制造技术">适用于表面安装技术的屏蔽组件制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种适用于表面安装技术的屏蔽组件，其包括适用于设置在被屏蔽部件周围的屏蔽边框，以及覆盖在所述屏蔽边框之上并且粘贴到所述屏蔽边框的屏蔽胶带，所述屏蔽胶带和所述屏蔽边框一起形成罩设在所述被屏蔽部件外部的罩体；所述屏蔽胶带包括外观层、金属层和能够经受200℃...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/sanmzhongguoyouxiangongsi/">三M中国有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/zhanghua/">张华</a>，<a href="https://www.jigao616.com/zhuanli/fangjing5/">方敬</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：4</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841885.aspx" target="_blank" title="一种手机专用的防干扰型屏蔽罩制造技术">一种手机专用的防干扰型屏蔽罩制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术涉及屏蔽罩技术领域，尤其是一种手机专用的防干扰型屏蔽罩，包括罩体，所述罩体呈方形，且罩体下端为开口设置，所述罩体中部开设有槽孔，所述槽孔内设置有转动机构，所述罩体下端两侧均开设有方形槽，所述方形槽的内侧上端中部固定安装有吸盘，且吸盘的下端延伸至方形槽的外侧下...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/zhejianghaitongtongxundianzigufenyouxiangongsi/">浙江海通通讯电子股份有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/?q=%e4%bb%bb%e5%8f%91%e5%86%9b">任发军</a>，<a href="https://www.jigao616.com/zhuanli/yeliang0/">叶亮</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：4</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841884.aspx" target="_blank" title="一种自动化电动执行器制造技术">一种自动化电动执行器制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种自动化电动执行器，包括壳体以及设置在壳体内部的电子设备，所述壳体的侧壁设有夹层，所述夹层的内部设多个环形管，多个所述环形管呈等间距分布，多个所述环形管的上侧均连通有进水管，所述壳体的上侧壁固定设有水箱，多个所述进水管的上端与水箱的底部连通，多个所述...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/shanghaibaotoujidiankejizhongxin/">上海宝绣机电科技中心</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/?q=%e8%81%82%e5%a4%a9%e5%ae%9d">聂天宝</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：4</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841883.aspx" target="_blank" title="手机电源适配器散热片结构制造技术">手机电源适配器散热片结构制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种手机电源适配器散热片结构，包括散热片本体、散热体以及插接件，在所述散热片本体一侧的上表面铆合固定所述散热体，该散热体的结构与所述散热片本体的上表面一致，在所述散热本体的另一侧开设有固定孔，所述散热片本体的左侧边缘向下延伸形成支撑体，所述支撑体中部的...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/chongqingshiyiyuanchakejiyouxiangongsi/">重庆市益源捷科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/lijiansheng/">李建生</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：5</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841882.aspx" target="_blank" title="一种具有散热功能的监控箱制造技术">一种具有散热功能的监控箱制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种具有散热功能的监控箱，包括长方体的舱体，所述舱体上设置有散热装置，所述舱体具有接线舱和电子舱，所述接线舱和电子舱之间通过开孔连通，所述接线舱和电子舱与舱体均铰接有盖板，所述散热装置包括主动散热机构、被动散热机构和阻热机构，所述主动散热机构包括设置在...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/chongqingshihaipuruanjianchanyeyouxiangongsi/">重庆市海普软件产业有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/chenxiuxiang/">陈秀祥</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e5%bc%a0%e5%a4%a7%e7%a6%8f">张大福</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e6%9b%b9%e5%b0%9a%e5%86%9b">曹尚军</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：5</span>
+                          </div>
+                         </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841881.aspx" target="_blank" title="一种矩阵式元器件开关状态显示器制造技术">一种矩阵式元器件开关状态显示器制造技术</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术涉及电气设备技术领域，具体为一种矩阵式元器件开关状态显示器，包括显示器本体以及安装槽，显示器本体嵌入式设置在安装槽内，且显示器本体的外侧暴露在安装槽外，显示器本体的外部上下两侧均开设有凸槽，显示器本体的内部上下两端均贯穿开设有插口，安装槽的外端上下两侧均垂直...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/fujiandongdiandianlishebeiyouxiangongsi/">福建东电电力设备有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/?q=%e9%98%99%e7%82%b3%e6%98%a5">阙炳春</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：5</span>
+                          </div>
+                         </li>
+                        <li>
+                          <div class="so-header">
+                              <a href="https://www.jigao616.com/zhuanlijieshao_22841880.aspx" target="_blank" title="一种电子电气设备的散热装置制造方法及图纸">一种电子电气设备的散热装置制造方法及图纸</a>
+                          </div>
+                          <div class="so-body">
+
+                            <div class="so-cont">
+                                本实用新型专利技术公开了一种电子电气设备的散热装置，涉及电气设备散热技术领域，该电子电气设备的散热装置，包括电气设备箱，所述电气设备箱的一侧开设有卡槽，所述卡槽的内部活动连接有防尘盒，所述防尘盒的两侧均固定连接有第一固定块，所述第一固定块的数量为两个，所述电气设备箱和两个第一...
+                            </div>
+                          </div>
+                          <div class="so-meta">
+                            专利权人：<a href="https://www.jigao616.com/zhuanli/zhangjinrui2/">张金瑞</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/liguojin2/">李国金</a>，<a href="https://www.jigao616.com/zhuanli/sunzhiguo0/">孙智国</a>，<a href="https://www.jigao616.com/zhuanli/zhangjinrui2/">张金瑞</a>，<a href="https://www.jigao616.com/zhuanli/yangyunling/">杨云玲</a>，<a href="https://www.jigao616.com/zhuanli/yangcheng/">杨成</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e8%87%a7%e9%be%99%e9%a3%9e">臧龙飞</a>，
+                          </div>
+                          <div class="so-footer">
+                            <span class="pull-left">
+                                1天前更新
+                            </span>
+                            <span class="pull-right"> 访问量：6</span>
+                          </div>
+                        </li>
+                        </ul>
+                        </div>
+                     </div>
+
+                    <div class="clo-md-4">
+
+
+                    </div>
+                </div>
+                        暂时没有数据
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>
+                <a href="javascript:void(0)">关于我们</a>
+                <span class="line">|</span>
+                <a href="javascript:void(0)">联系我们</a>
+                <span class="line"></span>
+            </p>
+            <p>Copyright © 2018 All Rights Reserved. </p>
+            <p> <a href="javascript:void(0)" target="_blank" rel="nofollow">XICP备xxxxx号-x</a>公网安备 xxxxxxxxxx号 归xxx所有</p>
+         </div>
+</body>
+</html>
