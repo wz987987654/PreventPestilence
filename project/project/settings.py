@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': "kaishen",
         'USER':'root',
         #不同的环境下mysql不一样
-        'PASSWORD':'123456',
+        'PASSWORD':'mysql57',
         'HOST':'localhost',
         'PORT':'3306'
     }
