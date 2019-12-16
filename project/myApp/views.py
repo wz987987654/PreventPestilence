@@ -221,7 +221,7 @@ def send_register_active_email(to_main_user_mail, username, token):
     sender = settings.EMAIL_FROM
     receivers = [to_main_user_mail]  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 
-    # 设置她的格式
+    # 设置格式
     message = MIMEText(msg11, 'html', 'utf-8')
     message['From'] = "疾病预警系统<http://127.0.0.1:8000/user/index>"
     message['To'] = to_main_user_mail
@@ -252,7 +252,8 @@ def send_register_active_email(to_main_user_mail, username, token):
 
 def forecast(request):
     print("a")
-    return render(request, "myApp/forecast/chinamap.html")
+    return render(request, "myApp/forecast/forecast.html")
+
 
 def inform(request):
     return render(request, "myApp/inform/inform.html")
