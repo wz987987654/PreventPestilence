@@ -2,14 +2,15 @@ from django.conf.urls import url
 from . import views
 from .views import RegisterView
 from .views import ActiveView
+from .views import Login
 urlpatterns=[
 
     # 主页
     url(r'^index/$', views.index, name="index"),
 
     #用户
-    url(r'^user/login$', views.toLogin, name="login"),
-    url(r'^user/dologin$', views.dologin, name="dologin"),
+    url(r'^user/login$', Login.as_view(), name="login"),
+    url(r'^user/dologin$', Login.as_view(), name="dologin"),
     url(r'^user/register$', RegisterView.as_view(), name="register"),
     url(r'^user/doRegister$', RegisterView.as_view(), name="doRegister"),
     url(r'^forecast/chinamap$', views.forecast, name="forecast"),

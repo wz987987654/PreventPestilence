@@ -112,7 +112,7 @@ class ActiveView(View):
 #登陆
 class Login(View):
     def get(self,request):
-        return render(request,"myApp/user/login.html")
+        return render(request, "myApp/user/login.html")
     def post(self,request):
 
         # 1 画面输入项目的检查
