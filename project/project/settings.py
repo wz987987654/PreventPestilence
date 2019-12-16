@@ -137,7 +137,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_USE_SSL= True   #是否使用TLS安全传输协议
 EMAIL_PORT = 465
 
-EMAIL_SUBJECT_PREFIX = u'[Hyct疾病预警]'
+EMAIL_SUBJECT_PREFIX = u'[Hytc疾病预警]'
 
 # 发送邮件的邮箱
 EMAIL_HOST_USER = '294403373@qq.com'
@@ -148,7 +148,7 @@ EMAIL_HOST_PASSWORD = 'dkhafgqsflsjbhhg'
 #EMAIL_HOST_PASSWORD = 'ayepodaywzepjadi'
 
 #  收件人看到的发件人
-#EMAIL_FROM = '1287572725@qq.com'
-EMAIL_FROM = '疾病预警系统'
+EMAIL_FROM = '1287572725@qq.com'
+#EMAIL_FROM = '疾病预警系统'
 SERVER_EMAIL = EMAIL_HOST_USER
 

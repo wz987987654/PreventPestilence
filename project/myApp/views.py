@@ -150,34 +150,48 @@ class Login(View):
         # 2 根据db存放数据进行比较
         # 2.1 验证邮箱
             user_by_email =  authenticate(email=email)
-
             if user_by_email is None:
                 msg = "用户不存在，请注册!"
                 rep_dict["msg"] = msg
                 return render(request, "myApp/user/register.html", rep_dict)
-
             auth_password = user_by_email.password;
-
             if (password  != auth_password):
                 msg = "密码输入有误"
                 rep_dict["msg"] = msg
                 rep_dict.pop("password")
                 rep_dict.pop("password2")
                 return render(request, "myApp/user/login.html", rep_dict)
-
             if cb1 is not None:
                 # 有设置redis  TODO
                 pass;
             # 设置session
             request.session["user_id"] =  user_by_email.id
-
             # 3 处理结束跳转画面
             return render(request, "myApp/index/index.html", {"userName": username})
 
-            # 手机号
-                # 验证通过
-                    # 判断有没有登陆90天
+        # 2.2 手机号
+            user_by_tel = authenticate(tel=tel)
+            if user_by_tel is None:
+                msg = "用户不存在，请注册!"
+                rep_dict["msg"] = msg
+                return render(request, "myApp/user/register.html", rep_dict)
+            auth_password = user_by_tel.password;
+            if (password != auth_password):
+                msg = "密码输入有误"
+                rep_dict["msg"] = msg
+                rep_dict.pop("password")
+                rep_dict.pop("password2")
+                return render(request, "myApp/user/login.html", rep_dict)
+            if cb1 is not None:
+                # 有设置redis  TODO
+                pass;
+            # 设置session
+            request.session["user_id"] = user_by_tel.id
+            # 3 处理结束跳转画面
+            return render(request, "myApp/index/index.html", {"userName": username})
 
+            # 验证通过
+                    # 判断有没有登陆90天
 
                 # 没有
             # 设置session
