@@ -10,7 +10,7 @@ from django.conf import settings
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
-
+import os
 
 
 import re
@@ -215,6 +215,22 @@ def index(request):
     return render(request,"myApp/index/index.html")
 
 
+def upfile(request):
+    return render(request,'myApp/common/upfile.html')
+
+from django.conf import settings
+def savefile(request):
+    if request.method=="POST":
+        f=request.FILES["file"]
+        # 文件在服务器端的路径
+        filePath=os.path.join(settings.MDEIA_ROOT,f.name)
+        # 文件上传就相当于文件复制
+        with open(filePath,'wb') as fp:
+            for info in f.chunks():
+                fp.write(info)
+        return HttpResponse("上传成功")
+    else:
+        return HttpResponse("上传失败")
 
 #暂时作为临时方法，以后用于celert
 def send_register_active_email(to_main_user_mail, username, token):

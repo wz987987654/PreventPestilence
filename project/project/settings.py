@@ -130,6 +130,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR,"static")
 ]
+# 配置上传文件
+MDEIA_ROOT=os.path.join(BASE_DIR,r'static\upfile')
+
 
 # 发送邮件配置
 EMAIL_HOST = 'smtp.qq.com'
