@@ -271,3 +271,6 @@ def forecast(request):
 
 def inform(request):
     return render(request, "myApp/inform/inform.html")
+
+def error(request):
+    return render(request,"myApp/common/error.html")
