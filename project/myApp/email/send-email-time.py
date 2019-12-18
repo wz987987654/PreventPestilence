@@ -1,56 +1,20 @@
-class EmailManager:
-    def __init__(self, **kwargs):
-        ...
+import smtplib #登陆邮件服务器，进行邮件发送
+from email.mime.text import MIMEText #负责构建邮件格式
 
-    def __get_cfg(self, key, throw=True):
-        ...
-
-    def __init_cfg(self):
-        ...
-
-    def login_server(self):
-        ...
-
-    def get_main_msg(self):
-        ...
-
-    def get_attach_file(self):
-        ...
-
-    def _format_addr(self, s):
-        ...
-
-    def send(self):
-        ...
-
-
-# 第二种方式，使用python任务定时运行库 schedule 模块
-def send_mail_by_schedule(manager):
-    schedule.every(5).minutes.do(manager.send())  # 每5分钟执行一次
-    schedule.every().hour.do(manager.send())  # 每小时执行一次
-    schedule.every().day.at("23:00").do(manager.send())  # 每天23:00执行一次
-    schedule.every().monday.do(manager.send())  # 每周星期一执行一次
-    schedule.every().wednesday.at("22:15").do(manager.send())  # 每周星期三22:15执行一次
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-
-
-if __name__ == "__main__":
-    manager = EmailManager(**mail_cfgs)
-    send_mail_by_schedule(manager)
+subject = "学习邮件"
+content = "孩子不学习，多半是欠的，抄五遍就好了"
+sender = "18360939363@163.com"
+password = "211416038A" #授权码
+recver = "2910424339@qq.com,1287572725@qq.com,1185675202@qq.com,2529614014@qq.com,"
 
 
 
+message = MIMEText(content,"plain","utf-8")
+message["Subject"] = subject
+message["To"] = recver
+message["From"] = sender
 
-
-
-
-
-
-
-
-
-
-
+smtp = smtplib.SMTP_SSL("smtp.qq.com",465)
+smtp.login(sender,password)
+smtp.sendmail(sender,recver.split(",\n"),message.as_string())
+smtp.close()
