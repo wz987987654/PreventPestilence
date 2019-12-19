@@ -212,7 +212,7 @@ def toRegisters(request):
     return render(request,"myApp/user/register.html")
 
 def index(request):
-    return render(request,"myApp/index/index.html")
+    return render(request,"myApp/index/index1.html")
 
 
 def upfile(request):

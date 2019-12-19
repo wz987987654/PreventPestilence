@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Grades,Students,Users,Rawdata,Forecast,Inform,Collect,Message,Jurisdiction
+from .models import Grades, Students, Users, Rawdata, Forecast, Inform, Collect, Message, Jurisdiction, Information
 
 admin.site.site_header = '淮安市传染病预警后台管理系统'
 admin.site.site_title = '登录系统后台'
@@ -57,7 +57,11 @@ class MessageAdmin(admin.ModelAdmin):
     search_fields = [ 'user_id', 'isShow', 'creator_id', 'update_id', 'createTime', 'lastTime']  # 查找
     list_per_page = 5
 
-
+class InformationAdmin(admin.ModelAdmin):
+    list_display = ['id','content', 'title','isShow', 'createTime', 'lastTime','creator_id', 'update_id',]
+    list_filter = ['id','isShow','creator_id', 'update_id', 'createTime', 'lastTime']
+    search_fields = [ 'id', 'isShow', 'creator_id', 'update_id', 'createTime', 'lastTime']  # 查找
+    list_per_page = 5
 
 class JurisdictionAdmin(admin.ModelAdmin):
     list_display = ['id', 'root_name','creator_id', 'update_id', 'createTime', 'lastTime']
@@ -89,5 +93,6 @@ admin.site.register(Forecast,ForecastAdmin)
 admin.site.register(Inform,InformAdmin)
 admin.site.register(Collect,CollectAdmin)
 admin.site.register(Message,MessageAdmin)
+admin.site.register(Information,InformationAdmin)
 admin.site.register(Jurisdiction,JurisdictionAdmin)
 

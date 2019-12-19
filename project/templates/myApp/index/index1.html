@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+{%  load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Tipping-Point Prediction</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../static/img/core-img/logo2.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/style.css">
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/css/button.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/index/bootstrap.min.css" rel="stylesheet">
+    <link href="https://img.jigao616.com/css/style.css" rel="stylesheet">
+    <link href="/static/css/common/common.css" rel="stylesheet">
+<!--    <script src="{% static 'lib/jquery-3.1.1.min.js' %}"></script>-->
+<!--    <script src="https://img.jigao616.com/js/html5shiv.min.js"></script>-->
+<!--    <script src="/static/script/common/common.js"></script>-->
+<!--    <script src="/static/script/index/index.js"></script>-->
+</head>
+<body>
+<header class="header-area">
+
+    <!-- Top Header Area -->
+    <div class="top-header-area d-flex justify-content-between align-items-center">
+
+
+    </div>
+
+    <!-- Navbar Area -->
+    <div id="sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 80px;"><div class="clever-main-menu" style="width: 1349px; position: fixed; top: 0px; z-index: inherit;">
+        <div class="classy-nav-container light left breakpoint-off">
+            <!-- Menu -->
+            <nav class="classy-navbar justify-content-between" id="cleverNav">
+
+                <!-- Logo -->
+                <a class="nav-brand" href="/"><img src="{% static 'image/logo1.png' %}" alt=""></a>
+
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                </div>
+
+                <!-- Menu -->
+                <div class="classy-menu">
+
+                    <!-- Close Button -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li><a href="/">主页</a></li>
+                            <li ><a href="#">可视化</a>
+                                <!-- <ul class="dropdown">
+                                    <li><a href="/example1">肺结核</a></li>
+                                    <li><a href="/example2">流行性感冒</a></li>
+                                    <li><a href="/example3">HIV</a></li>
+                                </ul>-->
+                           <span class="dd-trigger"></span></li>
+                            <li><a href="/methods">Methods</a></li>
+                            <li><a href="/tutorial">Tutorials</a></li>
+                            <li><a href="/us">About us</a></li>
+                        </ul>
+
+                        <!-- Search Button -->
+                        <div class="register-login-area">
+                            <a href="/analysis" class="btn active">Run TPP</a>
+                        </div>
+
+                        <!-- Register / Login -->
+                        <div class="register-login-area">
+                            <a href="/register" class="btn">Register</a>
+                            <a href="/login" class="btn">Login</a>
+                        </div>
+
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+        </div>
+    </div></div>
+</header>
+<section class="hero-area bg-img bg-overlay-2by5">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-4">
+                <!-- Hero Content -->
+                <div class="hero-content text-center">
+                    <h2>Prediction</h2>
+
+                    <a href="/analysis">
+                        <div class="item button-jittery">
+                            <button class="btn clever-btn">Get !
+<!--                                <marquee scrollamount="12"><span>Click to run TPP!</span></marquee>-->
+                            </button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-8">
+                <!-- Hero Content -->
+                <img src="http://www.rpcomputationalbiology.cn/static/img/bg-img/bg1.jpg" style="max-width:100%;z-index: -2;position: relative;">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="blog-area blog-page section-padding-100-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h3>数据可视化</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- 折线图 -->
+            <div class="col-12 col-lg-6">
+                <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="250ms" style="visibility: visible; animation-delay: 250ms; animation-name: fadeInUp;">
+                    <img src="http://www.rpcomputationalbiology.cn/static/img/blog-img/3.jpg" alt="">
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        <a href="#" class="blog-headline">
+                            <h4>折线图</h4>
+                        </a>
+                       <div class="meta d-flex align-items-center">
+                            <a href="#"> 平均数和临界点</a>
+                       </div>
+                       <p>x轴代表疾病的不同阶段，y轴代表同一阶段中不同样品的平均SLE评分。</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 监控地图 -->
+            <div class="col-12 col-lg-6">
+                <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="250ms" style="visibility: visible; animation-delay: 250ms; animation-name: fadeInUp;">
+                    <img src="http://www.rpcomputationalbiology.cn/static/img/blog-img/5.png" alt="">
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        <a href="#" class="blog-headline">
+                            <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">监控地图</font></font></h4>
+                        </a>
+                        <div class="meta d-flex align-items-center">
+                            <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 城市网络和爆发前信号</font></font></a>
+                        </div>
+                        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实时监测和分析传染病流行情况。</font></font></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 基因网络 -->
+            <div class="col-12 col-lg-6">
+                <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
+                    <img src="http://www.rpcomputationalbiology.cn/static/img/blog-img/2.jpg" alt="">
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        <a href="#" class="blog-headline">
+                            <h4>基因网络</h4>
+                        </a>
+                        <div class="meta d-flex align-items-center">
+                            <a href="#">PCC &amp; SLE score</a>
+                        </div>
+                        <p>通过将基因映射到STRING PPI网络来获得网络结构。最高SLE基因组/模块（即具有最大局部SLE得分的前200个基因）的进化说明，网络结构的重大变化发生在IIIB期。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 生存分析 -->
+            <div class="col-12 col-lg-6">
+                <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
+                    <img src="http://www.rpcomputationalbiology.cn/static/img/blog-img/4.jpg" alt="">
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        <a href="#" class="blog-headline">
+                            <h4>生存分析</h4>
+                        </a>
+                        <div class="meta d-flex align-items-center">
+                            <a href="#">SLE基因与基因表达</a>
+                        </div>
+                        <p>此类生存分析基于本地SLE得分，该得分是针对以每个上述基因为中心的本地网络的SLE值，而不是基因表达值。</p>
+                    </div>
+                </div>
+            </div>
+<!--            &lt;!&ndash;风景&ndash;&gt;-->
+<!--            <div class="col-12 col-lg-6">-->
+<!--                <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="250ms" style="visibility: visible; animation-delay: 250ms; animation-name: fadeInUp;">-->
+<!--                    <img src="http://www.rpcomputationalbiology.cn/static/img/blog-img/1.jpg" alt="">-->
+<!--                    &lt;!&ndash; Blog Content &ndash;&gt;-->
+<!--                    <div class="blog-content">-->
+<!--                        <a href="#" class="blog-headline">-->
+<!--                            <h4>Landscapes</h4>-->
+<!--                        </a>-->
+<!--&lt;!&ndash;                        <div class="meta d-flex align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a href="#"> Local SLE score &amp; Dynamical change</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <p>The dynamical change of local SLE scores demonstrates the landscape of the network entropy in&ndash;&gt;-->
+<!--&lt;!&ndash;                            a global view. The increase of SLE score provides an early-warning signal for the disease&ndash;&gt;-->
+<!--&lt;!&ndash;                            state, i.e., the stage that clinical symptom arises.</p>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; 3D景观直方图 &ndash;&gt;-->
+<!--            <div class="col-12 col-lg-6">-->
+<!--                <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">-->
+<!--                    <img src="http://www.rpcomputationalbiology.cn/static/img/blog-img/6.png" alt="">-->
+<!--                    &lt;!&ndash; Blog Content &ndash;&gt;-->
+<!--                    <div class="blog-content">-->
+<!--                        <a href="#" class="blog-headline">-->
+<!--                            <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3D景观直方图</font></font></h4>-->
+<!--                        </a>-->
+<!--                        <div class="meta d-flex align-items-center">-->
+<!--                            <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">监控和城市网络</font></font></a>-->
+<!--                        </div>-->
+<!--                        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">东京市当地23个病区的DNM得分或景观。</font></font></p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+
+
+    </div>
+</section>
+
+<div class="footer">
+            <p>
+                <a href="javascript:void(0)">关于我们</a>
+                <span class="line">|</span>
+                <a href="javascript:void(0)">联系我们</a>
+                <span class="line"></span>
+            </p>
+            <p>Copyright © 2018 All Rights Reserved. </p>
+            <p> <a href="javascript:void(0)" target="_blank" rel="nofollow">XICP备xxxxx号-x</a>公网安备 xxxxxxxxxx号 归XXX所有</p>
+         </div>
+</body>
+</html>

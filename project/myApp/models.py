@@ -60,6 +60,7 @@ class Inform(models.Model):
     class Meta:
         #verbose_name = '用户管理'
         verbose_name_plural = '通知管理'
+
 # 原始数据类
 class Rawdata(models.Model):
     date=models.DateTimeField(verbose_name="时间")
@@ -127,13 +128,11 @@ class Message(models.Model):
 
 class Jurisdiction(models.Model):
     root_id=models.IntegerField(verbose_name="权限id",default=1)
-
     ROOT_NAME_LIST = (
         (1, '预测发病数'),
         (2, '爬取数据'),
         (3, '保存数据'),
     )
-
     root_name=models.IntegerField(verbose_name="权限名", choices=ROOT_NAME_LIST, default=1)
     creator_id = models.IntegerField(verbose_name="创建者id", default=1)  # 创建者id
     update_id = models.IntegerField(verbose_name="更新者id", default=1)  # 更新者id
@@ -144,7 +143,18 @@ class Jurisdiction(models.Model):
         #verbose_name = '用户管理'
         verbose_name_plural = '权限管理'
 
-
+class Information(models.Model):
+    Information_id = models.IntegerField(verbose_name="资讯id", default=1)
+    title=models.CharField(verbose_name="标题",max_length=1500,default=1)
+    content = models.CharField(verbose_name="资讯内容", max_length=2000)
+    isShow = models.BooleanField(verbose_name="是否显示", default=True)
+    creator_id = models.IntegerField(verbose_name="创建者id", default=1)  # 创建者id
+    update_id = models.IntegerField(verbose_name="更新者id", default=1)  # 更新者id
+    lastTime = models.DateTimeField(verbose_name="最后更新时间", auto_now=True)
+    createTime = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
+    isDel = models.BooleanField(verbose_name="是否能删除", default=True)
+    class Meta:
+        verbose_name_plural = '资讯管理'
 
 class Grades(models.Model):
     gname=models.CharField(max_length=20)
