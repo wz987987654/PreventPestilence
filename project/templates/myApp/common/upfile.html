@@ -4,7 +4,7 @@
 
 {% block base %}
 
-<body>
+
 <form method="post" action="/savefile/" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" name="file"/>

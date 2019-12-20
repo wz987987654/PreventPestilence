@@ -207,6 +207,7 @@ def toLogin(request):
 #登陆
 def dologin(request):
     return render(request, "myApp/user/register.html")
+
 #跳转到注册画面
 def toRegisters(request):
     return render(request,"myApp/user/register.html")
@@ -270,6 +271,10 @@ def send_register_active_email(to_main_user_mail, username, token):
 
 
     """发送激活邮件"""
+def forecast(request):
+    print("a")
+    return render(request, "myApp/forecast/forecast.html")
+
     # 组织邮件信息
     subject = '天天生鲜欢迎信息'
     message = ''
@@ -280,13 +285,11 @@ def send_register_active_email(to_main_user_mail, username, token):
     send_mail(subject, message, sender, receiver, html_message=html_message)
 
 
-def forecast(request):
-    print("a")
-    return render(request, "myApp/forecast/forecast.html")
-
-
 def inform(request):
     return render(request, "myApp/inform/inform.html")
 
 def error(request):
     return render(request,"myApp/common/error.html")
+
+def visualization(request):
+    return render(request,'myApp/visualization/visualization.html')

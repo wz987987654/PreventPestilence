@@ -1,0 +1,577 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title -->
+    <title>Prediction</title>
+    <!-- Favicon -->
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/style.css">
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/css/button.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/index/bootstrap.min.css" rel="stylesheet">
+    <link href="https://img.jigao616.com/css/style.css" rel="stylesheet">
+    <link href="/static/css/common/common.css" rel="stylesheet">
+
+</head>
+<body>
+<header class="header-area">
+    <!-- Top Header Area -->
+    <div class="top-header-area d-flex justify-content-between align-items-center">
+    </div>
+    <!-- Navbar Area -->
+    <div id="sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 80px;"><div class="clever-main-menu" style="width: 1349px; position: fixed; top: 0px; z-index: inherit;">
+        <div class="classy-nav-container light left breakpoint-off">
+            <!-- Menu -->
+            <nav class="classy-navbar justify-content-between" id="cleverNav">
+
+                <!-- Logo -->
+                <a class="nav-brand" href="/index"><img src="{% static 'image/logo1.png' %}" alt=""></a>
+
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                </div>
+
+                <!-- Menu -->
+                <div class="classy-menu">
+
+                    <!-- Close Button -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li><a href="/index">主页</a></li>
+                            <li ><a href="#">可视化</a>
+                                <!-- <ul class="dropdown">
+                                    <li><a href="/example1">肺结核</a></li>
+                                    <li><a href="/example2">流行性感冒</a></li>
+                                    <li><a href="/example3">HIV</a></li>
+                                </ul>-->
+<!--                           <span class="dd-trigger"></span></li>-->
+                            <li><a href="/forecast/forecast">数据预测</a></li>
+                            <li><a href="/inform/inform">关于我们</a></li>
+                            <li><a href="/rawdata/rawdata">原始数据</a></li>
+                        </ul>
+
+                        <!-- Search Button -->
+                        <div class="register-login-area">
+                            <a href="/analysis" class="btn active">Run TPP</a>
+                        </div>
+
+                        <!-- Register / Login -->
+                        <div class="register-login-area">
+                            <a href="/register" class="btn">Register</a>
+                            <a href="/login" class="btn">Login</a>
+                        </div>
+
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+        </div>
+    </div></div>
+</header>
+
+<section class="popular-courses-area section-padding-100">
+    <div class="container">
+        <div class="row">
+            <!-- Single Popular Course -->
+            <div class="col-12 col-md-12 col-lg-12">
+                <h4 class="mb-30"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分析预测</font></font></h4>
+                <!-- Nav tabs -->
+                <div>
+                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请先选择您要分析的网络类型！</font></font></p>
+                    <!-- tab标签 -->
+                    <ul id="myTab" class="nav nav-tabs nav-justified">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#ppi" data-toggle="tab"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                KNN
+                            </font></font></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#custom" data-toggle="tab"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                PCA+HC
+                            </font></font></a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade" id="custom">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header ">
+                                            <h4 class="card-title">Input</h4>
+                                            <p class="card-category">Please input data on on the card below</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="form-group col-md-5">
+                                                        <label for="exampleFormControlFile1">Data upload</label>
+                                                        <form onchange="return getData()" id="uploadForm" class="form-inline" enctype="multipart/form-data">
+                                                            <div class="form-group">
+                                                                <input type="file" name="file" value="">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="form-group col-md-5">
+                                                        <label for="exampleFormControlFile1">Network upload</label>
+                                                        <form onchange="return getNetwork()" id="uploadForm1" class="form-inline" enctype="multipart/form-data">
+                                                            <div class="form-group">
+                                                                <input type="file" name="file" value="">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-8">
+                                                        <label for="squareSelect">Method selection</label>
+                                                        <select class="form-control input-square" id="squareSelect">
+                                                            <option>Dynamical network biomarker (DNB)</option>
+                                                            <option>Single-sample Landscape Entropy (SLE)</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-12 form-group">
+                                                        <label for="squareSelect">Data selection</label>
+                                                        <p class="card-category">The uploaded dataset contains <font color="red" id="columns">0</font>
+                                                            columns. Please indicate the information
+                                                            time points. </p>
+                                                        <div class="form-group form-inline">
+                                                            <label for="inlineinput" class="col-md-4 col-form-label">Customize
+                                                                the range of columns to analyze: </label>
+                                                            <div class="col-md-2 p-0">
+                                                                <input type="number" class="form-control input-full" id="start_columns" placeholder="Starting column">
+                                                            </div>
+                                                            <p>&nbsp;&nbsp;—&nbsp;&nbsp;</p>
+                                                            <div class="col-md-2 p-0">
+                                                                <input type="number" class="form-control input-full" id="end_columns" placeholder="End column">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-action">
+                                                        <!-- <button class="btn btn-success" onclick="submit()">Submit</button> -->
+                                                        <button class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate">
+                                                            Submit
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer ">
+                                                    <div class="stats">
+                                                        <i class="now-ui-icons loader_refresh spin"></i> Examples:
+                                                        <a href="/downloadTokyo"><i class="la la-cloud-download"></i>The
+                                                            outbreak of influenza in Tokyo (flu_tokyo)
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" id="div1" style="display:none" name="div1">
+                                    <div class="card">
+                                        <div class="card-header ">
+                                            <h4 class="card-title">Output</h4>
+                                            <p class="card-category">Histogram result &amp;&amp; Mean value result</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div id="container0" style="height:400px;width:90%"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div id="container1" style="height:400px;width:90%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+<!--                                        <div class="card-footer ">-->
+<!--                                            <div class="stats">-->
+<!--                                                <i class="now-ui-icons loader_refresh spin"></i> When I-score histogram-->
+<!--                                                sent-->
+<!--                                                out warning signals, hospitalized patients had not risen significantly.-->
+<!--                                                About a month later, regional influenza reached its outbreak point.-->
+<!--                                                Thus, I-score warning signals can provide CDC with at least four to five-->
+<!--                                                weeks of preparation time.-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="col-md-12" id="div2" style="display:none">
+                                    <div class="card">
+                                        <div class="card-header ">
+                                            <h4 class="card-title">Dynamical evolution of signaling network</h4>
+                                            <p class="card-category">Click on the title for larger image </p>
+                                        </div>
+                                        <div class="row" style="height:350px">
+                                            <div class="col-md-3">
+                                                <p style="text-align: center" data-toggle="modal" data-target="#cyto1">
+                                                    Normal
+                                                    Stage
+                                                    <button class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#myModal">view
+                                                    </button>
+                                                </p>
+                                                <div id="cy1" class="position-absolute"></div>
+                                            </div>
+<!--                                            <div class="col-md-1 containerD">-->
+<!--                                                <button type="button" class="btn btn-warning btn-arrow-right" style="height: 35px">Next-->
+<!--                                                </button>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-md-3">-->
+<!--                                                <p style="text-align: center" data-toggle="modal" data-target="#cyto2">-->
+<!--                                                    Pre-outbreak-->
+<!--                                                    Stage-->
+<!--                                                    <button class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#myModal">view-->
+<!--                                                    </button>-->
+<!--                                                </p>-->
+<!--                                                <div id="cy2" class="position-absolute"></div>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-md-1 containerD">-->
+<!--                                                <button type="button" class="btn btn-warning btn-arrow-right" style="height: 35px">Next-->
+<!--                                                </button>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-md-3">-->
+<!--                                                <p style="text-align: center" data-toggle="modal" data-target="#cyto3">-->
+<!--                                                    Outbreak Stage-->
+<!--                                                    <button class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#myModal">view-->
+<!--                                                    </button>-->
+<!--                                                </p>-->
+<!--                                                <div id="cy3" class="position-absolute"></div>-->
+<!--                                            </div>-->
+                                        </div>
+<!--                                        <div class="card-footer ">-->
+<!--                                            <div class="stats">-->
+<!--                                                <i class="now-ui-icons loader_refresh spin"></i> With the dynamic-->
+<!--                                                evolution of network graph, critical points are monitored in real time.-->
+<!--                                                The color of-->
+<!--                                                each node corresponds to its DNB score; the thickness of each edge-->
+<!--                                                corresponds to its correlation!-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane active" id="ppi">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header ">
+                                            <h4 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输入项</font></font></h4>
+                                            <p class="card-category"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请在下面的卡上输入数据</font></font></p>
+                                        </div>
+                                        <div class="card-body ">
+                                            <div class="card-body">
+                                                <div class="form-check">
+                                                    <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资料上传</font></font></label><br>
+                                                    <label class="form-radio-label col-md-5">
+                                                        <input class="form-radio-input radio-check" type="radio" name="dataRadios" value="yes">
+                                                        <span class="form-radio-sign"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考小组（请上传两个文件）</font></font></span>
+                                                    </label>
+                                                    <label class="form-radio-label col-md-5">
+                                                        <input class="form-radio-input radio-check" type="radio" name="dataRadios" value="no">
+                                                        <span class="form-radio-sign"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">没有参考组（请上传文件）</font></font></span>
+                                                    </label>
+                                                    <div class="form-check col-md-6" style="display:none" id="up1">
+                                                        <label for="exampleFormControlFile1">Experimental data
+                                                            <form onchange="return getExperimentalData()" id="uploadForm2" class="form-inline" enctype="multipart/form-data">
+                                                                <div class="form-group">
+                                                                    <input type="file" name="file" value="">
+                                                                </div>
+                                                            </form>
+                                                        </label>
+                                                        <label for="exampleFormControlFile1">Control data
+                                                            <form onchange="return getControlData()" id="uploadForm3" class="form-inline" enctype="multipart/form-data">
+                                                                <div class="form-group">
+                                                                    <input type="file" name="file" value="">
+                                                                </div>
+                                                            </form>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check col-md-6" style="display:none" id="up2">
+                                                        <label for="exampleFormControlFile1">Case data
+                                                            <form onchange="return getCaseData()" id="uploadForm4" class="form-inline" enctype="multipart/form-data">
+                                                                <div class="form-group">
+                                                                    <input type="file" name="file" value="">
+                                                                </div>
+                                                            </form>
+                                                            <p class="card-category">The samples in the first
+                                                                point/stage will be references</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check">
+                                                    <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生存分析</font></font></label><br>
+                                                    <label class="form-radio-label col-md-5">
+                                                        <input class="form-radio-input radio-check" type="radio" name="survivalRadios" value="yes">
+                                                        <span class="form-radio-sign"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">做生存分析（请上传患者数据）</font></font></span>
+                                                    </label>
+                                                    <label class="form-radio-label col-md-5">
+                                                        <input class="form-radio-input radio-check" type="radio" name="survivalRadios" value="no">
+                                                        <span class="form-radio-sign"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">没有生存分析</font></font></span>
+                                                    </label>
+                                                    <div class="form-check col-md-6" style="display:none" id="up3">
+                                                        <label for="exampleFormControlFile1">Patient data
+                                                            <form onchange="return getPatientData()" id="uploadForm5" class="form-inline" enctype="multipart/form-data">
+                                                                <div class="form-group">
+                                                                    <input type="file" name="file" value="">
+                                                                </div>
+                                                            </form>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check">
+                                                    <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">物种选择</font></font></label><br>
+                                                    <label class="form-radio-label col-md-4">
+                                                        <input class="form-radio-input radio-check" type="radio" name="optionsRadios" value="Homo">
+                                                        <span class="form-radio-sign"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">智人</font></font></span>
+                                                    </label>
+                                                    <label class="form-radio-label col-md-4">
+                                                        <input class="form-radio-input radio-check" type="radio" name="optionsRadios" value="Mus">
+                                                        <span class="form-radio-sign"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">小家鼠</font></font></span>
+                                                    </label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="squareSelect"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方法选择</font></font></label>
+                                                    <select class="form-control input-square" id="squareSelect1">
+                                                        <option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">单样本景观熵（SLE）</font></font></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="squareSelect"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">截止阈值</font></font></label>
+                                                    <div class="form-inline">
+                                                        <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">热门基因：&nbsp;&nbsp; </font></font><input type="number" value="5" placeholder="Input" class="form-control" id="maxentropynum" onchange="getGeneNum()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">％</font></font></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <div style="display:none" id="gene_num_div">
+                                                            <p class="card-category">you have chosen <font color="red" id="gene_num">0</font>
+                                                                genes. </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="squareSelect"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">数据选择</font></font></label>
+                                                    <p class="card-category"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上传的数据集包含</font></font><font color="red" id="columns1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                                        列。</font><font style="vertical-align: inherit;">请注明信息时间点。</font></font></p><br>
+                                                    <p class="card-category"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有
+                                                        </font></font><button type="button" class="btn btn-outline-primary btn-sm" onclick="fun(-1)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--
+                                                        </font></font></button>
+                                                        <span id="numcol"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1个</font></font></span>
+                                                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="fun(1)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+
+                                                        </font></font></button><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                                        时间点/阶段。
+                                                    </font></font></p>
+                                                    <div id="noApplicationRecord"><div class="form-group form-inline" id="start-end1"> <label for="inlineinput" class="col-md-5 col-form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一时间点/阶段： </font></font></label>  <div class="col-md-3 p-0"> <input type="number" class="form-control input-full" id="start_columns1" placeholder="Starting Column"> </div> <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&nbsp;&nbsp;-&nbsp;&nbsp;</font></font></p> <div class="col-md-3 p-0"> <input type="number" class="form-control input-full" id="end_columns1" placeholder="Ending Column"> </div> </div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-action">
+                                            <!-- <button class="btn btn-success" onclick="submit()">Submit</button> -->
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                                提交
+                                            </font></font></button>
+                                        </div>
+                                        <div class="card-footer ">
+                                            <br class="stats">
+                                            <i class="now-ui-icons loader_refresh spin"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 例子：</font></font><br>
+                                            <a href="/downloadlung"><i class="la la-cloud-download"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">急性肺损伤（GSE2565和小家鼠）</font></font></a>
+                                            <br>
+                                            <a href="/downloadluad"><i class="la la-cloud-download"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">肺腺癌（TCGA_LUAD和小家鼠）</font></font></a>
+                                            <br>
+                                            <a href="/downloadcoad"><i class="la la-cloud-download"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">结肠腺癌（TCGA_COAD和小家鼠）</font></font></a><br>
+                                                                                        <a href="/downloadlusc"><i class="la la-cloud-download"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">肺鳞状细胞癌（TCGA_LUSC和小家鼠）</font></font></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" id="div3" style="display:none" name="div3">
+                                    <div class="card">
+                                        <div class="card-header ">
+                                            <h4 class="card-title">Output</h4>
+                                            <p class="card-category">Mean value result</p>
+                                        </div>
+                                        <div class="card-body ">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="container2" style="height:400px;width:90%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer ">
+                                            <div class="stats">
+                                                <i class="now-ui-icons loader_refresh spin"></i> When I-score histogram
+                                                sent
+                                                out warning signals, hospitalized patients had not risen significantly.
+                                                About a month later, regional influenza reached its outbreak point.
+                                                Thus, I-score warning signals can provide CDC with at least four to five
+                                                weeks of preparation time.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" id="div_surface" style="display:none" name="div_surface">
+                                    <div class="card">
+                                        <div class="card-header ">
+                                            <h4 class="card-title">Landscape-SLE score</h4>
+                                            <p class="card-category">Landscape Surface</p>
+                                        </div>
+                                        <div class="card-body ">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="container_surface" style="height:400px;width:970px"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer ">
+                                            <div class="stats">
+                                                <i class="now-ui-icons loader_refresh spin"></i> The dynamical change of
+                                                local SLE scores demonstrates the landscape of the network entropy in a
+                                                global view.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" id="div4" style="display:none" name="div4">
+                                    <div class="card">
+                                        <div class="card-header ">
+                                            <h4 class="card-title">Dynamical evolution of signaling network</h4>
+                                            <p class="card-category">Click on the title for larger image </p>
+                                        </div>
+                                        <div class="card-body " id="swiper_card">
+                                            <div class="swiper-container" id="swiper_container">
+                                                <div class="swiper-wrapper" id="mySwiper">
+                                                </div>
+                                                <!-- Add Pagination -->
+                                                <div class="swiper-pagination"></div>
+                                                <!-- Add Arrows -->
+                                                <div class="swiper-button-next"></div>
+                                                <div class="swiper-button-prev"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer ">
+                                            <div class="stats">
+                                                <i class="now-ui-icons loader_refresh spin"></i> With the dynamic
+                                                evolution
+                                                of network graph, critical points are monitored in real time. The color
+                                                of
+                                                each node corresponds to its entropy (<font color="#6495ed">blue</font>
+                                                for low entropy, <font color="red">red</font> for high entropy); the
+                                                thickness of each edge
+                                                corresponds
+                                                to its correlation!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" id="div5" style="display:none" name="div5">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="card-title">Top High Entropy Gene</div>
+                                            <p class="card-category">Download gene list &amp;&amp; DAVID Bioinformatics
+                                                Resources
+                                                <a id="high_DavidAna" href="/index" class="btn btn-primary btn-sm" style="float:right" role="button" target="_blank">David Analysis</a>
+                                                <a href="/download_gene/1" class="btn btn-primary btn-sm" style="float:right; margin-right:15px" role="button">Download</a></p>
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="high_genetable" class="table table-striped table-bordered" style="width:100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>GeneID</th>
+                                                    <th>SLE-Value</th>
+                                                    <th>Description</th>
+                                                    <th>Location</th>
+                                                    <th>Family</th>
+                                                    <th>Drugs</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" id="div6" style="display:none" name="div6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="card-title">Top low Entropy Gene</div>
+                                            <p class="card-category">Download gene list &amp;&amp; DAVID Bioinformatics
+                                                Resources
+                                                <a id="low_DavidAna" href="/index" class="btn btn-primary btn-sm" style="float:right" role="button" target="_blank">David Analysis</a>
+                                                <a href="/download_gene/0" class="btn btn-primary btn-sm" style="float:right; margin-right:15px" role="button">Download</a></p>
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="low_genetable" class="table table-striped table-bordered" style="width:100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>GeneID</th>
+                                                    <th>SLE-Value</th>
+                                                    <th>Description</th>
+                                                    <th>Location</th>
+                                                    <th>Family</th>
+                                                    <th>Drugs</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" id="div7" style="display:none" name="div7">
+                                    <div class="card">
+                                        <div class="card-header ">
+                                            <h4 class="card-title">Survival analysis</h4>
+                                            <p class="card-category">Differ patient in survival analysis by high entropy
+                                                and low entropy</p>
+                                        </div>
+                                        <div class="card-body " id="survival_swiper_card">
+                                            <div class="swiper-container" id="survival_swiper_container">
+                                                <div class="swiper-wrapper" id="survival_mySwiper">
+                                                </div>
+                                                <!-- Add Pagination -->
+                                                <div class="swiper-pagination"></div>
+                                                <!-- Add Arrows -->
+                                                <div class="swiper-button-next"></div>
+                                                <div class="swiper-button-prev"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer ">
+                                            <div class="stats">
+                                                <i class="now-ui-icons loader_refresh spin"></i> With survival analysis,
+                                                it clearly show that
+                                                survival line of patient with high entropy in signal gene is different
+                                                from survival line of
+                                                patient with low entropy.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="footer">
+            <p>
+                <a href="javascript:void(0)">关于我们</a>
+                <span class="line">|</span>
+                <a href="javascript:void(0)">联系我们</a>
+                <span class="line"></span>
+            </p>
+            <p>Copyright © 2018 All Rights Reserved. </p>
+            <p> <a href="javascript:void(0)" target="_blank" rel="nofollow">XICP备xxxxx号-x</a>公网安备 xxxxxxxxxx号 归XXX所有</p>
+         </div>
+
+</body>

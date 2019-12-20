@@ -8,5 +8,7 @@
 }
 .login-wrap{
 	background: url('/static/image/login.jpg') center top no-repeat !important;
+	background:whitesmoke;
 	background-size: cover;
+	/*margin:0px 0px 30px 0px;*/
 }

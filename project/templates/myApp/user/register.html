@@ -9,8 +9,15 @@
     <!-- Bootstrap core CSS -->
     <link href="https://img.jigao616.com/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://img.jigao616.com/css/style.css" rel="stylesheet">
+
     <link href="{% static 'css/common/common.css' %}" rel="stylesheet">
     <link href="{% static 'css/register/register.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/index/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/style.css">
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/css/button.css">
+
     <title>注册</title>
 
     <!--JQUERY -->
@@ -21,52 +28,85 @@
     <script src="{% static 'script/register/register.js' %}"></script>
 </head>
 <body>
+<header class="header-area">
+    <!-- Top Header Area -->
+    <div class="top-header-area d-flex justify-content-between align-items-center">
+    </div>
+    <!-- Navbar Area -->
+    <div id="sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 80px;"><div class="clever-main-menu" style="width: 1349px; position: fixed; top: 0px; z-index: inherit;">
+        <div class="classy-nav-container light left breakpoint-off">
+            <!-- Menu -->
+            <nav class="classy-navbar justify-content-between" id="cleverNav">
 
-    <nav class="navbar navbar-diy">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">预测</span>
-                    </button>
-                    <a class="navbar-brand" href="/index"><img src="{% static 'image/logo1.png' %}" alt="疾病预防主页"></a>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <!-- 右侧 -->
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="/index">首页</a></li>
-                        <li><a href="/forecast/forecast">数据预测</a></li>
-                        <li><a href="/inform/inform">新闻版块</a></li>
-                    </ul>
-                    <!-- 左侧-->
-                     <ul id="top1_denglu" class="nav navbar-nav navbar-right">
-                        <li><a href="/user/login">登录</a></li>
-                        <li><a href="/user/register">注册</a></li>
-                    </ul>
+                <!-- Logo -->
+                <a class="nav-brand" href="/"><img src="{% static 'image/logo1.png' %}" alt=""></a>
+
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
                 </div>
 
-            </div>
-        </nav>
+                <!-- Menu -->
+                <div class="classy-menu">
 
-    <div class="login-wrap" style="height: 820px;">
-          <div class="form-popover">
-              <div class="form-hd">欢迎注册</div>
-              <div class="form-body">
-                  <form method="post" action="/user/doRegister"  id="from1">
-                    {% csrf_token %}
+                    <!-- Close Button -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
 
-                      <div class="form-row">
-                          <div class="hd">用户名</div>
-                          <div class="bd">
-                              <input name="username" type="text" id="username" placeholder="用户名" value="{{ username }}">
-                          </div>
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li><a href="/index">主页</a></li>
+                            <li ><a href="#">可视化</a>
+<!--                                <ul class="dropdown">-->
+<!--                                    <li><a href="/example1">肺结核</a></li>-->
+<!--                                    <li><a href="/example2">流行性感冒</a></li>-->
+<!--                                    <li><a href="/example3">HIV</a></li>-->
+<!--                                </ul>-->
+<!--                           <span class="dd-trigger"></span>-->
+                            </li>
+                            <li><a href="/forecast/forecast">数据预测</a></li>
+                            <li><a href="/inform/inform">关于我们</a></li>
+                            <li><a href="/rawdata/rawdata">原始数据</a></li>
+                        </ul>
+
+<!--                        &lt;!&ndash; Search Button &ndash;&gt;-->
+<!--                        <div class="register-login-area">-->
+<!--                            <a href="/analysis" class="btn active">Run TPP</a>-->
+<!--                        </div>-->
+
+                        <!-- Register / Login -->
+                        <div class="register-login-area">
+                            <a href="/user/register" class="btn">注册</a>
+                            <a href="/user/login" class="btn">登录</a>
                         </div>
 
-                  <div class="form-row">
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+        </div>
+    </div></div>
+</header>
+<div class="login-wrap" style="height: 700px;">
+    <div class="form-popover" style="margin-top:2px ">
+        <div class="form-hd">欢迎注册</div>
+        <div class="form-body">
+            <form method="post" action="/user/doRegister"  id="from1">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="hd">用户名</div>
+                    <div class="bd">
+                        <input name="username" type="text" id="username" placeholder="用户名" value="{{ username }}">
+                    </div>
+                </div>
+                <div class="form-row">
                       <div class="hd">手机号码</div>
                       <div class="bd">
                           <input name="tel" type="text" id="tel" placeholder="您的手机号码" value="{{ tel }}">
                       </div>
-                  </div>
+                </div>
 
                   <div class="form-row">
                       <div class="hd">邮箱地址</div>

@@ -9,13 +9,17 @@
     <!-- Bootstrap core CSS -->
     <link href="https://img.jigao616.com/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://img.jigao616.com/css/style.css" rel="stylesheet">
-    <link href="/static/css/common/common.css" rel="stylesheet">
-
-
+     <link href="/static/css/common/common.css" rel="stylesheet">
 
     <script type="text/javascript" src="/static/script/map/jquery.min.js"></script>
     <script type="text/javascript" src="/static/script/map/echarts.min.js"></script>
     <script type="text/javascript" src="/static/script/map/china.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/style.css">
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/css/button.css">
+
+
 
     <title>预测</title>
     <style>
@@ -44,33 +48,61 @@
     <script src="/static/script/index/index.js"></script>
 </head>
 <body>
-        <nav class="navbar navbar-diy">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">预测</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/index"><img src="{% static 'image/logo1.png' %}" alt="疾病预警系统主页"></a>
-                </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <!-- 右侧 -->
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="/index">首页</a></li>
-                    <li><a href="/forecast/forecast">数据预测</a></li>
-                    <li><a href="/inform/inform">新闻版块</a></li>
-                </ul>
-                <!-- 左侧-->
-                 <ul id="top1_denglu" class="nav navbar-nav navbar-right">
-                    <li><a href="/user/login">登录</a></li>
-                    <li><a href="/user/register">注册</a></li>
-                </ul>
-            </div>
+      <header class="header-area">
+    <!-- Top Header Area -->
+    <div class="top-header-area d-flex justify-content-between align-items-center">
+    </div>
+    <!-- Navbar Area -->
+    <div id="sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 80px;"><div class="clever-main-menu" style="width: 1349px; position: fixed; top: 0px; z-index: inherit;">
+        <div class="classy-nav-container light left breakpoint-off">
+            <!-- Menu -->
+            <nav class="classy-navbar justify-content-between" id="cleverNav">
 
-            </div>
-        </nav>
+                <!-- Logo -->
+                <a class="nav-brand" href="/index"><img src="{% static 'image/logo1.png' %}" alt=""></a>
+
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                </div>
+
+                <!-- Menu -->
+                <div class="classy-menu">
+
+                    <!-- Close Button -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li><a href="/index">主页</a></li>
+                            <li ><a href="#">可视化</a>
+                                <!-- <ul class="dropdown">
+                                    <li><a href="/example1">肺结核</a></li>
+                                    <li><a href="/example2">流行性感冒</a></li>
+                                    <li><a href="/example3">HIV</a></li>
+                                </ul>-->
+<!--                           <span class="dd-trigger"></span></li>-->
+                            <li><a href="/forecast/forecast">数据预测</a></li>
+                            <li><a href="/inform/inform">关于我们</a></li>
+                            <li><a href="/rawdata/rawdata">原始数据</a></li>
+                        </ul>
+
+                        <!-- Register / Login -->
+                        <div class="register-login-area">
+                            <a href="/user/register" class="btn">注册</a>
+                            <a href="/user/login" class="btn">登录</a>
+                        </div>
+
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+        </div>
+    </div></div>
+</header>
 
         <div class="wrap">
             <div class="container">
