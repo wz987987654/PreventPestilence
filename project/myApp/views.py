@@ -206,7 +206,7 @@ def toLogin(request):
     return render(request,"myApp/user/login.html")
 #登陆
 def dologin(request):
-    return render(request, "myApp/user/register.html")
+    return render(request, "myApp/user/index1.html")
 
 #跳转到注册画面
 def toRegisters(request):
@@ -293,3 +293,6 @@ def error(request):
 
 def visualization(request):
     return render(request,'myApp/visualization/visualization.html')
+
+def rawdata(request):
+    return render(request,'myApp/rawdata/rawdata.html')

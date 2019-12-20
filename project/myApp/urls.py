@@ -17,7 +17,7 @@ urlpatterns=[
     url(r'^user/toRegisters$', views.toRegisters, name="toRegisters"),
 
     url(r'^user/active/(?P<token>.*)$',ActiveView.as_view() , name="active$"),
-
+    url(r'^rawdata$',views.rawdata,name='rawdata'),
     url(r'^forecast/forecast$', views.forecast, name="forecast"),
     url(r'^inform/inform$', views.inform),
     url(r'^error', views.error, name="error"),
