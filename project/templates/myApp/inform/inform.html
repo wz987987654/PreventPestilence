@@ -7,72 +7,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="applicable-device" content="pc,mobile">
     <!-- Bootstrap core CSS -->
-    <link href="https://img.jigao616.com/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://img.jigao616.com/css/style.css" rel="stylesheet">
+    <link href="https://img.jigao616.com/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="/static/css/common/common.css" rel="stylesheet">
-    <title>预测</title>
+    <title>通知</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/style.css">
+    <link rel="stylesheet" href="http://www.rpcomputationalbiology.cn/static/css/button.css">
 
     <!--JQUERY -->
     <!--模版的方式渲染本地的jquery。这里也可以去渲染服务 -->
     <script src="{% static 'lib/jquery-3.1.1.min.js' %}"></script>
     <script src="https://img.jigao616.com/js/html5shiv.min.js"></script>
-    <script src="/static/script/common/common.js"></script>
-    <script src="/static/script/index/index.js"></script>
+
 
 </head>
 <body>
-<nav class="navbar navbar-diy">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">新闻板块</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/index"><img src="{% static 'image/logo1.png' %}" alt="疾病预警系统主页"></a>
+<header class="header-area">
+    <!-- Top Header Area -->
+    <div class="top-header-area d-flex justify-content-between align-items-center">
+    </div>
+    <!-- Navbar Area -->
+    <div id="sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 80px;"><div class="clever-main-menu" style="width: 1349px; position: fixed; top: 0px; z-index: inherit;">
+        <div class="classy-nav-container light left breakpoint-off">
+            <!-- Menu -->
+            <nav class="classy-navbar justify-content-between" id="cleverNav">
+
+                <!-- Logo -->
+                <a class="nav-brand" href="/"><img src="{% static 'image/logo1.png' %}" alt=""></a>
+
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
                 </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <!-- 右侧 -->
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="/index">首页</a></li>
-                    <li><a href="/forecast/forecast">数据预测</a></li>
-                    <li><a href="/inform/inform">新闻版块</a></li>
-                </ul>
-                <!-- 左侧-->
-                 <ul id="top1_denglu" class="nav navbar-nav navbar-right">
-                    <li><a href="/user/login">登录</a></li>
-                    <li><a href="/user/register">注册</a></li>
-                </ul>
-            </div>
 
-            </div>
-        </nav>
+                <!-- Menu -->
+                <div class="classy-menu">
 
+                    <!-- Close Button -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
 
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li><a href="/index">主页</a></li>
+                            <li ><a href="#">可视化</a>
+<!--                                <ul class="dropdown">-->
+<!--                                    <li><a href="/example1">肺结核</a></li>-->
+<!--                                    <li><a href="/example2">流行性感冒</a></li>-->
+<!--                                    <li><a href="/example3">HIV</a></li>-->
+<!--                                </ul>-->
+<!--                           <span class="dd-trigger"></span>-->
+                            </li>
+                            <li><a href="/forecast/forecast">数据预测</a></li>
+                            <li><a href="/inform/inform">研究现状</a></li>
+<!--                            <li><a href="/rawdata/rawdata">原始数据</a></li>-->
+                        </ul>
+
+<!--                        &lt;!&ndash; Search Button &ndash;&gt;-->
+<!--                        <div class="register-login-area">-->
+<!--                            <a href="/analysis" class="btn active">Run TPP</a>-->
+<!--                        </div>-->
+
+                        <!-- Register / Login -->
+                        <div class="register-login-area">
+                            <a href="/user/register" class="btn">注册</a>
+                            <a href="/user/login" class="btn">登录</a>
+                        </div>
+
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+        </div>
+    </div></div>
+</header>
     <div class="wrap">
       <div class="container">
           <div class="row">
             <div class="col-md-8">
                 <div class="col-search-list col-topbar">
-                    <div class="soinbox">
-                        <div class="so-header">HI，欢迎进入！</div>
-                        <div class="so-body">
-                          <div class="so-cont">
-                              输入关键词，如  <a href="#" class="text-tag">肺结核</a>、<a href="#" class="text-tag">二氧化碳</a>  等词，再点击搜索即可。
-                           </div>
-                         </div>
-                        <div class="so-in-search">
-                            <input type="text" value="" placeholder="输入技术关键词，如肺结核、二氧化碳" class="in-control" id="search_text" name="search_text" onkeydown="if(event.keyCode==13){patentIS(); return false;}">
-						    <button class="btn-inbar" onclick="patentIS();return false;"></button>
-                         </div>
-                     </div>
+<!--                    <div class="soinbox">-->
+<!--                        <div class="so-header">HI，欢迎进入！</div>-->
+<!--                        <div class="so-body">-->
+<!--                          <div class="so-cont">-->
+<!--                              输入关键词，如  <a href="#" class="text-tag">肺结核</a>、<a href="#" class="text-tag">二氧化碳</a>  等词，再点击搜索即可。-->
+<!--                           </div>-->
+<!--                         </div>-->
+<!--                        <div class="so-in-search">-->
+<!--                            <input type="text" value="" placeholder="输入技术关键词，如肺结核、二氧化碳" class="in-control" id="search_text" name="search_text" onkeydown="if(event.keyCode==13){patentIS(); return false;}">-->
+<!--						    <button class="btn-inbar" onclick="patentIS();return false;"></button>-->
+<!--                         </div>-->
+<!--                     </div>-->
                 </div>
                 <div class="col-box">
                   <div class="col-box-header">
                       <div id="PanelZhongshuju">
 					    <div class="box-header-h3">最新资料</div>
-                        <div class="box-header-h5">截至2019年12月16日，共有<strong class="text-red">20,150,265</strong>条数据。</div>
+                        <div class="box-header-h5">截至2019年12月16日，共有<strong class="text-red">XXXX</strong>条数据。</div>
                       </div>
                   </div>
                 </div>
@@ -80,16 +115,16 @@
                      <ul>
                         <li>
                           <div class="so-header">
-                              <a href="#" target="_blank" title="一种PIN插装机构制造技术">一种PIN插装机构制造技术</a>
+                              <a href="#" target="_blank" title="">广西学生肺结核发病趋势分析及预警系统建立</a>
                           </div>
                           <div class="so-body">
                             <div class="so-cont">
-                                本实用新型专利技术公开了一种PIN插装机构，包括机架，所述机架上平行设置有两个PIN输送剪切组件、搬运组件以及PIN插装组件，并且每个所述PIN输送剪切组件包括PIN送料件以及与所述PIN送料件相连接的PIN剪切件，所述PIN剪切件用于对所述PIN送料件输出的PIN进行剪切；...
+                                探索学校结核病发病趋势，建立高敏感度的学生肺结核发病预测模型，并采取精 准、高效的疫情处置技术策略是目前学校结核病防控 工作的重点内容。本研究通过时间序列模型的分析方法对广西学生肺结核报告发病数进行预测，并构建广西学校肺结核报告发病预警系统，为早期甄别疫情和科学防控提供依据。……
                             </div>
                           </div>
-                          <div class="so-meta">
-                            专利权人：<a href="https://www.jigao616.com/zhuanli/guangzhoukeshengcekongshebeiyouxiangongsi/">广州科升测控设备有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/huangxiaoping0/">黄小平</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e9%92%9f%e7%a7%8b%e8%89%af">钟秋良</a>，<a href="https://www.jigao616.com/zhuanli/liuyu22/">刘裕</a>，
-                          </div>
+<!--                          <div class="so-meta">-->
+<!--                            专利权人：<a href="https://www.jigao616.com/zhuanli/guangzhoukeshengcekongshebeiyouxiangongsi/">广州科升测控设备有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/huangxiaoping0/">黄小平</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e9%92%9f%e7%a7%8b%e8%89%af">钟秋良</a>，<a href="https://www.jigao616.com/zhuanli/liuyu22/">刘裕</a>，-->
+<!--                          </div>-->
                           <div class="so-footer">
                             <span class="pull-left">
                                 1天前更新
@@ -99,17 +134,16 @@
                       </li>
                         <li>
                           <div class="so-header">
-                              <a href="https://www.jigao616.com/zhuanlijieshao_22841898.aspx" target="_blank" title="一种电子器件用安装结构制造技术">一种电子器件用安装结构制造技术</a>
+                              <a href="#" target="_blank" title="">运用线性回归移动平均模型构建广西肺结核登记预警系统研究</a>
                           </div>
                           <div class="so-body">
-
                             <div class="so-cont">
-                                本实用新型专利技术公开了一种电子器件用安装结构，包括电子器件主体，所述电子器件主体的两端均安装有引出线，所述电子器件主体的两侧安装有支撑脚，所述电子器件主体的一侧安装有第一夹持杆，所述第一夹持杆的一侧通过铰链安装有第二夹持杆，所述第一夹持杆的一端内侧设置有啮合凹槽，所述第一夹...
+                                目的 应用线性回归移动平均预警模型，探讨广西肺结核登记趋势; 通过肺结核登记警戒线及行动线的设置，及时发现异常情况并采取有效的防控措施。结论 该预测和预警系统对可能出现的结核病流行和暴发及时采取有效的预测，减少主观判断，为干预行动建立客观标准，实现低成本的报告登记监测和评价，可在实际工作中参考运用。……
                             </div>
                           </div>
-                          <div class="so-meta">
-                            专利权人：<a href="https://www.jigao616.com/zhuanli/shanghailaiaodianzikejiyouxiangongsi/">上海莱翱电子科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/?q=%e8%b5%b5%e4%b8%96%e8%8c%b9">赵世茹</a>，
-                          </div>
+<!--                          <div class="so-meta">-->
+<!--                            专利权人：<a href="https://www.jigao616.com/zhuanli/shanghailaiaodianzikejiyouxiangongsi/">上海莱翱电子科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/?q=%e8%b5%b5%e4%b8%96%e8%8c%b9">赵世茹</a>，-->
+<!--                          </div>-->
                           <div class="so-footer">
                             <span class="pull-left">
                                 1天前更新
@@ -119,17 +153,16 @@
                       </li>
                         <li>
                           <div class="so-header">
-                              <a href="https://www.jigao616.com/zhuanlijieshao_22841897.aspx" target="_blank" title="一种电子器件贴片装置制造方法及图纸">一种电子器件贴片装置制造方法及图纸</a>
+                              <a href="#" target="_blank" title="">基于疾病预测的体检结果生成系统</a>
                           </div>
                           <div class="so-body">
-
                             <div class="so-cont">
-                                本实用新型专利技术公开了一种电子器件贴片装置，包括机体主体框架，所述机体主体框架的上方之间安装有悬挂架，所述悬挂架的底端安装有灯管，所述机体主体框架的一侧靠上位置处安装有控制面板，所述机体主体框架的另一侧安装有第二电机，所述机体主体框架的下方安装有储物箱，所述储物箱的顶端安装...
+                                本文提出基于疾病预测的体检结果生成系统解决方案。基于大量历史体检数据，通过建模分析，进行多标签疾病预测；其次，基于多标签疾病模型预测的疾病信息，基于Apriori方法的体检结果生成模型、基于疾病和特征的体检结果生成模型...
                             </div>
                           </div>
-                          <div class="so-meta">
-                            专利权人：<a href="https://www.jigao616.com/zhuanli/yuetong0/">岳通</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/yuetong0/">岳通</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e9%83%91%e8%b4%a2%e6%98%8e">郑财明</a>，
-                          </div>
+<!--                          <div class="so-meta">-->
+<!--                            专利权人：<a href="https://www.jigao616.com/zhuanli/yuetong0/">岳通</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/yuetong0/">岳通</a>，<a href="https://www.jigao616.com/zhuanli/?q=%e9%83%91%e8%b4%a2%e6%98%8e">郑财明</a>，-->
+<!--                          </div>-->
                           <div class="so-footer">
                             <span class="pull-left">
                                 1天前更新
@@ -139,17 +172,17 @@
                          </li>
                         <li>
                           <div class="so-header">
-                              <a href="https://www.jigao616.com/zhuanlijieshao_22841896.aspx" target="_blank" title="一种新型贴片机用吸嘴制造技术">一种新型贴片机用吸嘴制造技术</a>
+                              <a href="#" target="_blank" title="">The impact of climate variability on infectious disease transmission in China: Current knowledge and further directions</a>
                           </div>
                           <div class="so-body">
 
                             <div class="so-cont">
-                                本实用新型专利技术公开了一种新型贴片机用吸嘴，其结构包括吸嘴本体、吸嘴杆、固定扣、连接盘、吸嘴头、定位槽、连接装置和缓冲装置，通过设置连接装置，将氢化丁腈橡胶密封垫放置到定位槽中，保证设备连接的密封性，通过顶盖与吸嘴杆连接固定，将气管与外界设备连接，气管与连接管通过固定盘连接...
+                                A comprehensive literature review was conducted to examine the relationship between climate variability and infectious disease transmission in China in the new millennium. Literature was identified using the following MeSH terms and keywords: climatic variables [temperature, precipitation, rainfall, humidity, etc.] and infectious disease [viral, bacterial and parasitic diseases]....
                             </div>
                           </div>
-                          <div class="so-meta">
-                            专利权人：<a href="https://www.jigao616.com/zhuanli/shenzhenshifushijindianzikejiyouxiangongsi/">深圳市富士锦电子科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/huangjiahong1/">黄嘉鸿</a>，
-                          </div>
+<!--                          <div class="so-meta">-->
+<!--                            专利权人：<a href="https://www.jigao616.com/zhuanli/shenzhenshifushijindianzikejiyouxiangongsi/">深圳市富士锦电子科技有限公司</a>，　　技术研发人员：<a href="https://www.jigao616.com/zhuanli/huangjiahong1/">黄嘉鸿</a>，-->
+<!--                          </div>-->
                           <div class="so-footer">
                             <span class="pull-left">
                                 1天前更新
@@ -485,56 +518,24 @@
                 </div>
             </div>
             <div class="col-md-4">
+
                 <div class="col-box">
-                  <div class="col-box-header"><span class="search-tit"><a href="#" title="2019-12-16发明人排行榜">科研机构数量排行前10</a></span></div>
-                  <div class="col-box-list">
-                      <ul>
-							<li><a href="#" title="优瑞玛特合心上海自动化科技有限公司专利">优瑞玛特合心上海自动化科技有限公司</a> 16</li>
-
-							<li><a href="#" title="浙江大搜车软件技术有限公司专利">浙江大搜车软件技术有限公司</a> 31</li>
-
-							<li><a href="#" title="紫光云技术有限公司专利">紫光云技术有限公司</a> 20</li>
-
-							<li><a href="#" title="西门子交通有限公司专利">西门子交通有限公司</a> 28</li>
-
-							<li><a href="#" title="山东晶导微电子股份有限公司专利">山东晶导微电子股份有限公司</a> 100</li>
-
-							<li><a href="#" title="电信科学技术研究院有限公司专利">电信科学技术研究院有限公司</a> 240</li>
-
-							<li><a href="#" title="OPPO重庆智能科技有限公司专利">OPPO重庆智能科技有限公司</a> 1304</li>
-
-							<li><a href="#" title="武汉邮电科学研究院有限公司专利">武汉邮电科学研究院有限公司</a> 86</li>
-
-							<li><a href="#" title="吉旗物联科技上海有限公司专利">吉旗物联科技上海有限公司</a> 32</li>
-
-							<li><a href="#" title="科医公司专利">科医公司</a> 6</li>
-
-                      </ul>
+                  <div class="col-box-header">
+                      <span class="search-tit">
+                          <a href="#" >主流方法</a>
+                      </span>
                   </div>
-                </div>
-                <div class="col-box">
-                  <div class="col-box-header"><span class="search-tit"><a href="#" title="2019-12-16发明人排行榜">科研机构数量排行前10</a></span></div>
                   <div class="col-box-list">
                       <ul>
-							<li><a href="#" title="优瑞玛特合心上海自动化科技有限公司专利">优瑞玛特合心上海自动化科技有限公司</a> 16</li>
+							<li><a href="#" title="动态网络生物标志物">动态网络生物标志物</a> </li>
 
-							<li><a href="#" title="浙江大搜车软件技术有限公司专利">浙江大搜车软件技术有限公司</a> 31</li>
+							<li><a href="#" title="隐马尔可夫模型">隐马尔可夫模型</a></li>
 
-							<li><a href="#" title="紫光云技术有限公司专利">紫光云技术有限公司</a> 20</li>
+							<li><a href="#" title="基于分布转换的方法">基于分布转换的方法</a></li>
 
-							<li><a href="#" title="西门子交通有限公司专利">西门子交通有限公司</a> 28</li>
+							<li><a href="#" title="单样本景观熵（SLE）">单样本景观熵（SLE）</a></li>
 
-							<li><a href="#" title="山东晶导微电子股份有限公司专利">山东晶导微电子股份有限公司</a> 100</li>
 
-							<li><a href="#" title="电信科学技术研究院有限公司专利">电信科学技术研究院有限公司</a> 240</li>
-
-							<li><a href="#" title="OPPO重庆智能科技有限公司专利">OPPO重庆智能科技有限公司</a> 1304</li>
-
-							<li><a href="#" title="武汉邮电科学研究院有限公司专利">武汉邮电科学研究院有限公司</a> 86</li>
-
-							<li><a href="#" title="吉旗物联科技上海有限公司专利">吉旗物联科技上海有限公司</a> 32</li>
-
-							<li><a href="#" title="科医公司专利">科医公司</a> 6</li>
 
                       </ul>
                   </div>
