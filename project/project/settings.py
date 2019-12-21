@@ -25,7 +25,7 @@ SECRET_KEY = 'w#7n*h*td3cpt5h)e=zgk4vwh&x3)2qsmd^uku5zzl2!4!p%6f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['172.16.9.184']
 #ALLOWED_HOSTS = []
 
 # Application definition
@@ -140,7 +140,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_USE_SSL= True   #是否使用TLS安全传输协议
 EMAIL_PORT = 465
 
-EMAIL_SUBJECT_PREFIX = u'[Hytc疾病预警]'
+EMAIL_SUBJECT_PREFIX = u'[疾病预警]'
 
 # 发送邮件的邮箱
 EMAIL_HOST_USER = '294403373@qq.com'

@@ -296,3 +296,9 @@ def visualization(request):
 
 def rawdata(request):
     return render(request,'myApp/rawdata/rawdata.html')
+
+def line(request):
+    return render(request,'myApp/index/line.html')
+
+def aboutus(request):
+    return render(request,'myApp/aboutus/aboutus.html')

@@ -18,12 +18,13 @@ urlpatterns=[
 
     url(r'^user/active/(?P<token>.*)$',ActiveView.as_view() , name="active$"),
     url(r'^rawdata$',views.rawdata,name='rawdata'),
+    url(r'^index/line$',views.line,name="line"),
     url(r'^forecast/forecast$', views.forecast, name="forecast"),
     url(r'^inform/inform$', views.inform),
     url(r'^error', views.error, name="error"),
     url(r'^upfile/$',views.upfile),
     url(r'^savefile/$',views.savefile),
     url(r'^visualization', views.visualization, name="visualization"),
-
+    url(r'^aboutus$',views.aboutus,name="aboutus")
 
 ]
