@@ -116,89 +116,67 @@ class Login(View):
     def post(self,request):
         print("aaa")
         # 1 画面输入项目的检查
-        tel = request.POST.get("tel");
-        email = request.POST.get("email");
-        password = request.POST.get("password");
-        password2 = request.POST.get("password2");
-        cb1 = request.POST.get("cb1");
+        tel = request.POST.get("tel")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        password2 = request.POST.get("password2")
+        cb1 = request.POST.get("cb1")
 
         # 1.1 输入项目不能为空
         rep_dict = dict(tel=tel, email=email, password=password, password2=password2)
 
-        if (not all([password, password2])):
+        if not all([password, password2]):
             msg = "密码不能为空"
             rep_dict["msg"] = msg
             return render(request, "myApp/user/login.html", rep_dict)
 
-        if (not all([tel]) and not all([email])):
+        if not all([tel]) and not all([email]):
             msg = "电话号码或者邮箱必修输入"
             rep_dict["msg"] = msg
             return render(request, "myApp/user/login.html", rep_dict)
 
-        if (password != password2):
+        if password != password2:
             msg = "两次密码不一致"
             rep_dict["msg"] = msg
             rep_dict.pop("password")
             rep_dict.pop("password2")
             return render(request, "myApp/user/login.html", rep_dict)
 
-        if ( all([tel,email])):
+        if all([tel,email]):
             return render(request, "myApp/common/error.html",{"msg": "系统受到外部攻击，请联系管理员", "jump_index": "http://127.0.0.1:8000/index/"})
+        user_by_auth = None
+        if all(tel) and not all(email):
+            # 2.2 手机号登陆
+            user_by_auth = Users.objects.get(tel=tel)
+        elif not all(tel) and all(email):
+            # 先判断等方式
+            # 1.2  输入项目必须合法 ,排除一些关键字，不如说 script ,比如说# ,比如说 delete ********
 
-        # 1.2  输入项目必须合法 ,排除一些关键字，不如说 script ,比如说# ,比如说 delete ********
+            # 2 根据db存放数据进行比较
+            # 2.1 验证邮箱
+            user_by_auth = Users.objects.get(email=email)
 
-        # 2 根据db存放数据进行比较
-        # 2.1 验证邮箱
-            user_by_email =  authenticate(email=email)
-            if user_by_email is None:
-                msg = "用户不存在，请注册!"
-                rep_dict["msg"] = msg
-                return render(request, "myApp/user/register.html", rep_dict)
-            auth_password = user_by_email.password;
-            if (password  != auth_password):
-                msg = "密码输入有误"
-                rep_dict["msg"] = msg
-                rep_dict.pop("password")
-                rep_dict.pop("password2")
-                return render(request, "myApp/user/login.html", rep_dict)
-            if cb1 is not None:
-                # 有设置redis  TODO
-                pass;
-            # 设置session
-            request.session["user_id"] =  user_by_email.id
-            # 3 处理结束跳转画面
-            return render(request, "myApp/index/index.html", {"userName": username})
+        if user_by_auth is None:
+            msg = "用户不存在，请注册!"
+            rep_dict["msg"] = msg
+            return render(request, "myApp/user/login.html", rep_dict)
 
-        # 2.2 手机号
-            user_by_tel = authenticate(tel=tel)
-            if user_by_tel is None:
-                msg = "用户不存在，请注册!"
-                rep_dict["msg"] = msg
-                return render(request, "myApp/user/register.html", rep_dict)
-            auth_password = user_by_tel.password;
-            if (password != auth_password):
-                msg = "密码输入有误"
-                rep_dict["msg"] = msg
-                rep_dict.pop("password")
-                rep_dict.pop("password2")
-                return render(request, "myApp/user/login.html", rep_dict)
-            if cb1 is not None:
-                # 有设置redis  TODO
-                pass;
-            # 设置session
-            request.session["user_id"] = user_by_tel.id
-            # 3 处理结束跳转画面
-            return render(request, "myApp/index/index.html", {"userName": username})
+        # TODO
+        auth_password = user_by_auth.password
 
-            # 验证通过
-                    # 判断有没有登陆90天
-
-                # 没有
-            # 设置session
-
+        if user_by_auth.password != auth_password:
+            msg = "密码输入有误"
+            rep_dict["msg"] = msg
+            rep_dict.pop("password")
+            rep_dict.pop("password2")
+            return render(request, "myApp/user/login.html", rep_dict)
+        if cb1 is not None:
+            # 有设置redis  TODO
+            pass
+        # 设置session
+        request.session["user_id"] = user_by_auth.id
         # 3 处理结束跳转画面
-        pass
-
+        return render(request, "myApp/index/index.html", {"userName": user_by_auth.username})
 
 
 #跳转到登陆画面
